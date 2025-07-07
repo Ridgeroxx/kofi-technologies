@@ -249,7 +249,7 @@ function openPaymentModal(productId) {
     
     // Generate WhatsApp message and update button
 const whatsappMessage = generateWhatsAppMessage(product);
-const whatsappNumber = '233241588134';
+const whatsappNumber = '233241588134'; // Use the configured WhatsApp number
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 document.getElementById('whatsapp-button').href = whatsappUrl;
 
@@ -280,7 +280,7 @@ function closePaymentModal() {
 
 // Generate WhatsApp message
 function generateWhatsAppMessage(product) {
-    let message = `Hi! I'm interested in ordering this product from Kofi N. Technologies:
+    let message = `Hi! I'm interested in ordering this product from Odisika Mall:
 
 🛍️ *${product.name}*
 💰 Price: ${config.currency}${product.price}`;
@@ -302,18 +302,14 @@ function generateWhatsAppMessage(product) {
 
     message += `
 
-Hello Kofi N. Technologies,
+Please provide me with:
+- Availability confirmation
+- My preferred color/size (if applicable)
+- Delivery options and timeline to my location in Ghana
+- Payment methods accepted
+- Final total including delivery costs
 
-I’m interested in one of your services and would like to request the following details:
-
-- ✅ Availability confirmation
-- 🎨 Preferred type or specification: [e.g., Automatic Sliding Gate – black, medium size]
-- 🚚 Delivery options and estimated timeline to my location in Ghana (please specify if you deliver to [Your Town/City])
-- 💳 Accepted payment methods (MoMo, bank transfer, etc.)
-- 💵 Final total cost including delivery
-
-Looking forward to your response. Thank you!
-
+Thank you!`;
 
     return message;
 }
