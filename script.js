@@ -280,7 +280,7 @@ function closePaymentModal() {
 
 // Generate WhatsApp message
 function generateWhatsAppMessage(product) {
-    let message = `Hello, I’m interested in purchasing the following product from *Kofi N. Technologies*:
+    let message = `Hello, I’m interested in purchasing & Installing the following product from *Kofi N. Technologies*:
 
 🛍️ *Product:* ${product.name}
 💰 *Price:* ${config.currency}${product.price}`;
