@@ -280,36 +280,36 @@ function closePaymentModal() {
 
 // Generate WhatsApp message
 function generateWhatsAppMessage(product) {
-    let message = `Hi! I'm interested in ordering this product from Odisika Mall:
+    let message = `Hello, I’m interested in purchasing the following product from *Kofi N. Technologies*:
 
-🛍️ *${product.name}*
-💰 Price: ${config.currency}${product.price}`;
+🛍️ *Product:* ${product.name}
+💰 *Price:* ${config.currency}${product.price}`;
 
-    // Add product details if available
+    // Add optional details
     if (product.details) {
-        if (product.details.colors && product.details.colors.length > 0) {
-            message += `\n🎨 Available Colors: ${product.details.colors.join(', ')}`;
+        if (product.details.colors?.length) {
+            message += `\n🎨 *Available Colors:* ${product.details.colors.join(', ')}`;
         }
-        
-        if (product.details.sizes && product.details.sizes.length > 0) {
-            message += `\n📏 Available Types: ${product.details.sizes.join(', ')}`;
+
+        if (product.details.sizes?.length) {
+            message += `\n📐 *Available Types/Sizes:* ${product.details.sizes.join(', ')}`;
         }
-        
-        if (product.details.compatibility && product.details.compatibility.length > 0) {
-            message += `\n📱 Compatible with: ${product.details.compatibility.join(', ')}`;
+
+        if (product.details.compatibility?.length) {
+            message += `\n📱 *Compatibility:* ${product.details.compatibility.join(', ')}`;
         }
     }
 
     message += `
 
-Please provide me with:
-- Availability confirmation
-- My preferred color/size (if applicable)
-- Delivery options and timeline to my location in Ghana
-- Payment methods accepted
-- Final total including delivery costs
+Kindly assist with the following:
+1. Confirm availability
+2. Provide any current offers or bundles
+3. Share delivery options to my location
+4. Let me know the total cost (including delivery)
+5. Payment methods (MoMo, Bank Transfer, Cash, etc.)
 
-Thank you!`;
+Looking forward to your response. Thank you!`;
 
     return message;
 }
