@@ -130,44 +130,6 @@ function viewFull(image) {
   win.document.write(`<img src="${image}" style="width:100%">`);
 }
 
-function openPaymentModal(productId) {
-  const product = products.find(p => p.id === productId);
-  if (!product) return;
-
-  // Show modal
-  document.getElementById("payment-modal").classList.remove("hidden");
-
-  // Fill modal
-  document.getElementById("modal-product-name").textContent = product.name;
-  document.getElementById("modal-product-description").textContent = product.description;
-  document.getElementById("modal-product-image").src = product.image;
-
-  // Features
-  const featuresList = document.getElementById("features-list");
-  if (featuresList) {
-    featuresList.innerHTML = product.details.features.map(f => `<li>✅ ${f}</li>`).join('');
-  }
-
-  // Warranty
-  const warranty = product.details.warranty || "None";
-  document.getElementById("warranty-info").textContent = warranty;
-
-  // Gallery thumbnails
-  const gallery = product.details.gallery || [];
-  const modalGallery = document.getElementById("modal-gallery");
-  if (modalGallery) {
-    modalGallery.innerHTML = gallery.map(img =>
-      `<img src="${img}" class="h-16 w-16 rounded object-cover border hover:scale-105 transition cursor-pointer" onclick="viewFull('${img}')">`
-    ).join('');
-  }
-
-  // WhatsApp Button
-  const msg = generateWhatsAppMessage(product);
-  const url = `https://wa.me/${config.whatsappNumber.replace("+", "")}?text=${encodeURIComponent(msg)}`;
-  document.getElementById("whatsapp-button").href = url;
-}
-
-
 function renderProducts() {
   const grid = document.getElementById("products-grid");
   if (!grid) return;
