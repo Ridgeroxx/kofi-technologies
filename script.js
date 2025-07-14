@@ -1,73 +1,72 @@
-// Product data for Odisika Mall
+// Product data for Kofi N. Technologies
 const products = [
   {
     id: 1,
     name: "Garage Doors",
-    price: 2500,
     image: "images/garage doors.png",
     description: "Secure and automated garage doors.",
     details: {
       features: ["Remote control", "Durable", "Weather resistant"],
-      warranty: "2-year installation warranty"
+      warranty: "2-year installation warranty",
+      gallery: ["images/garage doors.png", "images/gallery/garage1.jpg", "images/gallery/garage2.jpg"]
     }
   },
   {
     id: 2,
     name: "Automated Gates",
-    price: 4500,
     image: "images/automated gate.jpeg",
     description: "Convenient entry with smart automation.",
     details: {
       features: ["Motion sensors", "Keypad access", "Remote opening"],
-      warranty: "3-year warranty"
+      warranty: "3-year warranty",
+      gallery: ["images/automated gate.jpeg", "images/gallery/gate1.jpg", "images/gallery/gate2.jpg"]
     }
   },
   {
     id: 3,
     name: "Electric Fences",
-    price: 3200,
     image: "images/electric fence.jpg",
     description: "Robust electric fencing for your property.",
     details: {
       features: ["High voltage", "Alarm system", "Durable wiring"],
-      warranty: "5-year warranty"
+      warranty: "5-year warranty",
+      gallery: ["images/electric fence.jpg", "images/gallery/fence1.jpg", "images/gallery/fence2.jpg"]
     }
   },
   {
     id: 4,
     name: "CCTV Surveillance",
-    price: 1500,
     image: "images/cctv.jpeg",
     description: "24/7 monitoring with HD cameras.",
     details: {
       features: ["HD quality", "Mobile access", "Night vision"],
-      warranty: "2-year warranty"
+      warranty: "2-year warranty",
+      gallery: ["images/cctv.jpeg", "images/gallery/cctv1.jpg"]
     }
   },
   {
     id: 5,
     name: "Intercom Systems",
-    price: 1000,
     image: "images/intercom.jpg",
     description: "Safe audio and video communication.",
     details: {
       features: ["Video call", "Indoor & outdoor units", "Clear audio"],
-      warranty: "1-year warranty"
+      warranty: "1-year warranty",
+      gallery: ["images/intercom.jpg", "images/gallery/intercom1.jpg"]
     }
   },
   {
     id: 6,
     name: "Security Shutters",
-    price: 3000,
     image: "images/shutter.jpeg",
     description: "Strong roller shutters for protection.",
     details: {
       features: ["Remote controlled", "Anti-rust", "Heavy-duty"],
-      warranty: "3-year warranty"
+      warranty: "3-year warranty",
+      gallery: ["images/shutter.jpeg", "images/gallery/shutter1.jpg"]
     }
   }
 ];
-
 
 const config = {
   whatsappNumber: '+233241588134',
@@ -75,119 +74,84 @@ const config = {
   storeName: 'Kofi N. Technologies'
 };
 
-// Rendering and modal logic same as your original script.js
-// Use your existing event listeners, modal handlers, and functions
-// Just make sure to call renderProducts() on DOMContentLoaded
+function injectProductSchemas() {
+  const schema = products.map(product => ({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "image": product.details.gallery,
+    "description": product.description,
+    "brand": {
+      "@type": "Organization",
+      "name": config.storeName
+    }
+  }));
+
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.innerHTML = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  injectProductSchemas();
   renderProducts();
+  setupEventListeners();
+  setupIntersectionObserver();
+  updateFooterWhatsApp();
 });
+
+function viewFull(image) {
+  const win = window.open();
+  win.document.write(`<img src="${image}" style="width:100%">`);
+}
+
+function openPaymentModal(productId) {
+  const product = products.find(p => p.id === productId);
+  if (!product) return;
+
+  const modalGallery = document.getElementById('modal-gallery');
+  if (modalGallery && product.details.gallery) {
+    modalGallery.innerHTML = product.details.gallery.map(image =>
+      `<img src="${image}" class="h-20 w-20 rounded-lg object-cover cursor-pointer border border-gray-200 hover:scale-105 transition" onclick="viewFull('${image}')">`
+    ).join('');
+  }
+}
 
 function renderProducts() {
   const grid = document.getElementById("products-grid");
-  grid.innerHTML = products.map(p => `
-    <div class="bg-white rounded-xl shadow-md p-4 hover:shadow-xl transition cursor-pointer">
-      <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover rounded-lg mb-4">
-      <h3 class="text-lg font-bold text-gray-800 mb-1">${p.name}</h3>
-      <p class="text-gray-600 mb-2">${p.description}</p>
-      <p class="text-primary-600 font-bold">${config.currency}${p.price}</p>
+  if (!grid) return;
+
+  grid.innerHTML = products.map((product, index) => `
+    <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl animate-fade-in group cursor-pointer" 
+         style="animation-delay: ${index * 0.1}s"
+         onclick="openPaymentModal(${product.id})">
+      <div class="product-image-container relative h-64 overflow-hidden">
+        <img src="${product.image}" 
+             alt="${product.name}" 
+             class="product-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+             loading="lazy"
+             onerror="this.src='https://via.placeholder.com/400x400/3b82f6/ffffff?text=Product+Image'">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+          <span class="bg-accent-500 text-white px-2 py-1 rounded-full text-xs font-medium animate-pulse">
+            ✨ Premium
+          </span>
+        </div>
+      </div>
+      <div class="p-6">
+        <h3 class="font-bold text-xl text-gray-800 mb-2 line-clamp-2 group-hover:text-primary-600 transition-colors duration-300">${product.name}</h3>
+        <p class="text-gray-600 mb-4 text-sm line-clamp-2">${product.description}</p>
+        <div class="flex justify-end items-center">
+          <button onclick="event.stopPropagation(); openPaymentModal(${product.id})" 
+                  class="btn-primary bg-accent-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-accent-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 animate-glow">
+            <i class="fas fa-shopping-cart mr-2 animate-wiggle"></i>
+            View More
+          </button>
+        </div>
+      </div>
     </div>
   `).join('');
-}
-
-
-// DOM Elements
-const productsGrid = document.getElementById('products-grid');
-const paymentModal = document.getElementById('payment-modal');
-const modalContent = document.getElementById('modal-content');
-const closeModalBtn = document.getElementById('close-modal');
-const whatsappButton = document.getElementById('whatsapp-button');
-const loadingSpinner = document.getElementById('loading-spinner');
-
-// Modal elements
-const modalProductImage = document.getElementById('modal-product-image');
-const modalProductName = document.getElementById('modal-product-name');
-const modalProductPrice = document.getElementById('modal-product-price');
-const modalProductDescription = document.getElementById('modal-product-description');
-const featuresList = document.getElementById('features-list');
-const colorsSection = document.getElementById('colors-section');
-const colorsList = document.getElementById('colors-list');
-const sizesSection = document.getElementById('sizes-section');
-const sizesList = document.getElementById('sizes-list');
-const compatibilitySection = document.getElementById('compatibility-section');
-const compatibilityList = document.getElementById('compatibility-list');
-const warrantySection = document.getElementById('warranty-section');
-const warrantyInfo = document.getElementById('warranty-info');
-
-// Initialize the application
-document.addEventListener('DOMContentLoaded', function() {
-    renderProducts();
-    setupEventListeners();
-    setupIntersectionObserver();
-    updateFooterWhatsApp();
-});
-
-// Render products in the grid
-function renderProducts() {
-    if (!productsGrid) return;
-    
-    const productHTML = products.map((product, index) => `
-        <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl animate-fade-in group cursor-pointer" 
-             style="animation-delay: ${index * 0.1}s"
-             onclick="openPaymentModal(${product.id})">
-            <div class="product-image-container relative h-64 overflow-hidden">
-                <img src="${product.image}" 
-                     alt="${product.name}" 
-                     class="product-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                     loading="lazy"
-                     onerror="this.src='https://via.placeholder.com/400x400/3b82f6/ffffff?text=Product+Image'">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div class="absolute top-4 right-4">
-                    <span class="bg-white/90 backdrop-blur-sm text-gray-800 px-3 py-1 rounded-full text-sm font-bold shadow-lg animate-float">
-                        ${config.currency}${product.price}
-                    </span>
-                </div>
-                <div class="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
-                    <span class="bg-accent-500 text-white px-2 py-1 rounded-full text-xs font-medium animate-pulse">
-                        ✨ Premium
-                    </span>
-                </div>
-                <!-- Hover overlay -->
-                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-110 group-hover:scale-100">
-                    <div class="bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-xl animate-bounce-gentle">
-                        <i class="fas fa-eye text-primary-500 text-xl"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="p-6">
-                <h3 class="font-bold text-xl text-gray-800 mb-2 line-clamp-2 group-hover:text-primary-600 transition-colors duration-300">${product.name}</h3>
-                <p class="text-gray-600 mb-4 text-sm line-clamp-2">${product.description}</p>
-                ${product.details && product.details.colors ? `
-                <div class="mb-3">
-                    <div class="flex gap-1">
-                        ${product.details.colors.slice(0, 3).map(color => `
-                            <div class="w-4 h-4 rounded-full border-2 border-white shadow-sm" 
-                                 style="background: ${getColorHex(color)}"
-                                 title="${color}"></div>
-                        `).join('')}
-                        ${product.details.colors.length > 3 ? `<span class="text-xs text-gray-500 ml-1">+${product.details.colors.length - 3}</span>` : ''}
-                    </div>
-                </div>
-                ` : ''}
-                <div class="flex justify-between items-center">
-                    <span class="text-2xl font-bold text-primary-500 group-hover:text-accent-500 transition-colors duration-300">
-                        ${config.currency}${product.price}
-                    </span>
-                    <button onclick="event.stopPropagation(); openPaymentModal(${product.id})" 
-                            class="btn-primary bg-accent-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-accent-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 animate-glow">
-                        <i class="fas fa-shopping-cart mr-2 animate-wiggle"></i>
-                        Buy Now
-                    </button>
-                </div>
-            </div>
-        </div>
-    `).join('');
-    
-    productsGrid.innerHTML = productHTML;
 }
 
 // Open payment modal
