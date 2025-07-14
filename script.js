@@ -65,6 +65,28 @@ const products = [
       warranty: "3-year warranty",
       gallery: ["images/shutter.jpeg", "images/gallery/shutter1.jpg"]
     }
+  },
+  {
+    id: 2,
+    name: "Automated Gates",
+    image: "images/automated gate.jpeg",
+    description: "Convenient entry with smart automation.",
+    details: {
+      features: ["Motion sensors", "Keypad access", "Remote opening"],
+      warranty: "3-year warranty",
+      gallery: ["images/automated gate.jpeg", "images/gallery/gate1.jpg", "images/gallery/gate2.jpg"]
+    }
+  },
+  {
+    id: 2,
+    name: "Automated Gates",
+    image: "images/automated gate.jpeg",
+    description: "Convenient entry with smart automation.",
+    details: {
+      features: ["Motion sensors", "Keypad access", "Remote opening"],
+      warranty: "3-year warranty",
+      gallery: ["images/automated gate.jpeg", "images/gallery/gate1.jpg", "images/gallery/gate2.jpg"]
+    }
   }
 ];
 
