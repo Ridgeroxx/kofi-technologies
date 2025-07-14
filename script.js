@@ -67,7 +67,7 @@ const products = [
     }
   },
   {
-    id: 2,
+    id: 7,
     name: "Automated Gates",
     image: "images/automated gate.jpeg",
     description: "Convenient entry with smart automation.",
@@ -78,7 +78,7 @@ const products = [
     }
   },
   {
-    id: 2,
+    id: 8,
     name: "Automated Gates",
     image: "images/automated gate.jpeg",
     description: "Convenient entry with smart automation.",
