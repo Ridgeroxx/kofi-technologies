@@ -201,60 +201,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Open payment modal
 function openPaymentModal(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-    
-    // Update basic product info
-    modalProductImage.src = product.image;
-    modalProductImage.alt = product.name;
-    modalProductName.textContent = product.name;
-    modalProductDescription.textContent = product.description;
-    modalProductPrice.textContent = `${config.currency}${product.price}`;
-    
-    // Populate features
-    if (product.details && product.details.features) {
-        featuresList.innerHTML = product.details.features.map(feature => 
-            `<li class="flex items-center"><i class="fas fa-check text-accent-500 mr-2"></i>${feature}</li>`
-        ).join('');
-    }
-    
-    // Show/hide and populate colors
-    if (product.details && product.details.colors && product.details.colors.length > 0) {
-        colorsSection.classList.remove('hidden');
-        colorsList.innerHTML = product.details.colors.map(color => 
-            `<span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">${color}</span>`
-        ).join('');
-    } else {
-        colorsSection.classList.add('hidden');
-    }
-    
-    // Show/hide and populate sizes
-    if (product.details && product.details.sizes && product.details.sizes.length > 0) {
-        sizesSection.classList.remove('hidden');
-        sizesList.innerHTML = product.details.sizes.map(size => 
-            `<span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">${size}</span>`
-        ).join('');
-    } else {
-        sizesSection.classList.add('hidden');
-    }
-    
-    // Show/hide and populate compatibility
-    if (product.details && product.details.compatibility && product.details.compatibility.length > 0) {
-        compatibilitySection.classList.remove('hidden');
-        compatibilityList.innerHTML = product.details.compatibility.map(device => 
-            `<span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">${device}</span>`
-        ).join('');
-    } else {
-        compatibilitySection.classList.add('hidden');
-    }
-    
-    // Show/hide and populate warranty
-    if (product.details && product.details.warranty) {
-        warrantySection.classList.remove('hidden');
-        warrantyInfo.textContent = product.details.warranty;
-    } else {
-        warrantySection.classList.add('hidden');
-    }
+  const product = products.find(p => p.id === productId);
+  if (!product) return;
+
+  // Show modal
+  document.getElementById("payment-modal").classList.remove("hidden");
+
+  // Fill modal
+  document.getElementById("modal-product-name").textContent = product.name;
+  document.getElementById("modal-product-description").textContent = product.description;
+  document.getElementById("modal-product-image").src = product.image;
+
+  // Features
+  const featuresList = document.getElementById("features-list");
+  if (featuresList) {
+    featuresList.innerHTML = product.details.features.map(f => `<li>✅ ${f}</li>`).join('');
+  }
+
+  // Warranty
+  const warranty = product.details.warranty || "None";
+  document.getElementById("warranty-info").textContent = warranty;
+
+  // Gallery thumbnails
+  const gallery = product.details.gallery || [];
+  const modalGallery = document.getElementById("modal-gallery");
+  if (modalGallery) {
+    modalGallery.innerHTML = gallery.map(img =>
+      `<img src="${img}" class="h-16 w-16 rounded object-cover border hover:scale-105 transition cursor-pointer" onclick="viewFull('${img}')">`
+    ).join('');
+  }
+
+  // WhatsApp Button
+  const msg = generateWhatsAppMessage(product);
+  const url = `https://wa.me/${config.whatsappNumber.replace("+", "")}?text=${encodeURIComponent(msg)}`;
+  document.getElementById("whatsapp-button").href = url;
+}
+
     
     // Generate WhatsApp message and update button
 const whatsappMessage = generateWhatsAppMessage(product);
@@ -278,8 +260,13 @@ paymentModal.classList.add('modal-show');
 
 // Close payment modal
 function closePaymentModal() {
-    paymentModal.classList.remove('modal-show');
-    
+  document.getElementById("payment-modal").classList.add("hidden");
+}
+function viewFull(image) {
+  const win = window.open();
+  win.document.write(`<img src="${image}" style="width:100%;border-radius:8px">`);
+}
+
     // Hide modal after animation
     setTimeout(() => {
         paymentModal.classList.add('hidden');
