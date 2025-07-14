@@ -1,3 +1,13 @@
+// Modal DOM references
+const paymentModal = document.getElementById('payment-modal');
+const modalProductName = document.getElementById('modal-product-name');
+const modalProductDescription = document.getElementById('modal-product-description');
+const modalProductImage = document.getElementById('modal-product-image');
+const featuresList = document.getElementById('features-list');
+const warrantyInfo = document.getElementById('warranty-info');
+const modalGallery = document.getElementById('modal-gallery');
+const whatsappButton = document.getElementById('whatsapp-button');
+
 // Product data for Kofi N. Technologies
 const products = [
   {
