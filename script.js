@@ -93,14 +93,6 @@ function injectProductSchemas() {
   document.head.appendChild(script);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  injectProductSchemas();
-  renderProducts();
-  setupEventListeners();
-  setupIntersectionObserver();
-  updateFooterWhatsApp();
-});
-
 function viewFull(image) {
   const win = window.open();
   win.document.write(`<img src="${image}" style="width:100%">`);
@@ -110,12 +102,19 @@ function openPaymentModal(productId) {
   const product = products.find(p => p.id === productId);
   if (!product) return;
 
+  const modal = document.getElementById('payment-modal');
   const modalGallery = document.getElementById('modal-gallery');
+  const modalName = document.getElementById('modal-product-name');
+  const modalDesc = document.getElementById('modal-product-description');
+
+  if (modal) modal.classList.remove('hidden');
   if (modalGallery && product.details.gallery) {
     modalGallery.innerHTML = product.details.gallery.map(image =>
       `<img src="${image}" class="h-20 w-20 rounded-lg object-cover cursor-pointer border border-gray-200 hover:scale-105 transition" onclick="viewFull('${image}')">`
     ).join('');
   }
+  if (modalName) modalName.textContent = product.name;
+  if (modalDesc) modalDesc.textContent = product.description;
 }
 
 function renderProducts() {
@@ -124,9 +123,8 @@ function renderProducts() {
 
   grid.innerHTML = products.map((product, index) => `
     <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl animate-fade-in group cursor-pointer" 
-         style="animation-delay: ${index * 0.1}s"
-         onclick="openPaymentModal(${product.id})">
-      <div class="product-image-container relative h-64 overflow-hidden">
+         style="animation-delay: ${index * 0.1}s">
+      <div class="product-image-container relative h-64 overflow-hidden" onclick="openPaymentModal(${product.id})">
         <img src="${product.image}" 
              alt="${product.name}" 
              class="product-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -153,6 +151,12 @@ function renderProducts() {
     </div>
   `).join('');
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  injectProductSchemas();
+  renderProducts();
+});
+
 
 // Open payment modal
 function openPaymentModal(productId) {
