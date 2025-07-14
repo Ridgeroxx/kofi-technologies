@@ -124,20 +124,39 @@ function openPaymentModal(productId) {
   const product = products.find(p => p.id === productId);
   if (!product) return;
 
-  const modal = document.getElementById('payment-modal');
-  const modalGallery = document.getElementById('modal-gallery');
-  const modalName = document.getElementById('modal-product-name');
-  const modalDesc = document.getElementById('modal-product-description');
+  // Show modal
+  document.getElementById("payment-modal").classList.remove("hidden");
 
-  if (modal) modal.classList.remove('hidden');
-  if (modalGallery && product.details.gallery) {
-    modalGallery.innerHTML = product.details.gallery.map(image =>
-      `<img src="${image}" class="h-20 w-20 rounded-lg object-cover cursor-pointer border border-gray-200 hover:scale-105 transition" onclick="viewFull('${image}')">`
+  // Fill modal
+  document.getElementById("modal-product-name").textContent = product.name;
+  document.getElementById("modal-product-description").textContent = product.description;
+  document.getElementById("modal-product-image").src = product.image;
+
+  // Features
+  const featuresList = document.getElementById("features-list");
+  if (featuresList) {
+    featuresList.innerHTML = product.details.features.map(f => `<li>✅ ${f}</li>`).join('');
+  }
+
+  // Warranty
+  const warranty = product.details.warranty || "None";
+  document.getElementById("warranty-info").textContent = warranty;
+
+  // Gallery thumbnails
+  const gallery = product.details.gallery || [];
+  const modalGallery = document.getElementById("modal-gallery");
+  if (modalGallery) {
+    modalGallery.innerHTML = gallery.map(img =>
+      `<img src="${img}" class="h-16 w-16 rounded object-cover border hover:scale-105 transition cursor-pointer" onclick="viewFull('${img}')">`
     ).join('');
   }
-  if (modalName) modalName.textContent = product.name;
-  if (modalDesc) modalDesc.textContent = product.description;
+
+  // WhatsApp Button
+  const msg = generateWhatsAppMessage(product);
+  const url = `https://wa.me/${config.whatsappNumber.replace("+", "")}?text=${encodeURIComponent(msg)}`;
+  document.getElementById("whatsapp-button").href = url;
 }
+
 
 function renderProducts() {
   const grid = document.getElementById("products-grid");
