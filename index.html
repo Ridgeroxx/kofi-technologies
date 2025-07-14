@@ -278,19 +278,29 @@
 </section>
 
 >
-          <!-- Modal Structure -->
+          <!-- Product Modal -->
 <div id="payment-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
-  <div class="bg-white p-6 rounded-lg max-w-2xl w-full relative">
+  <div class="bg-white p-6 rounded-lg max-w-2xl w-full relative shadow-xl animate-fade-in">
     <button onclick="document.getElementById('payment-modal').classList.add('hidden')" 
             class="absolute top-2 right-2 text-gray-600 hover:text-red-500 text-2xl">&times;</button>
-    
-    <h2 id="modal-product-name" class="text-2xl font-bold mb-2"></h2>
+
+    <h2 id="modal-product-name" class="text-2xl font-bold mb-2 text-gray-800"></h2>
     <p id="modal-product-description" class="text-gray-600 mb-4"></p>
 
-    <!-- Image gallery thumbnails -->
-    <div id="modal-gallery" class="flex gap-2 overflow-x-auto"></div>
+    <div id="modal-gallery" class="flex gap-2 overflow-x-auto mb-4"></div>
+
+    <!-- Optional: WhatsApp CTA -->
+    <div class="text-right">
+      <a id="whatsapp-button" 
+         href="https://wa.me/233241588134" 
+         target="_blank"
+         class="inline-block bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-lg font-semibold transition">
+         <i class="fab fa-whatsapp mr-2"></i>Inquire via WhatsApp
+      </a>
+    </div>
   </div>
 </div>
+
 
 
             
