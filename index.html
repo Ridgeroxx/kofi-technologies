@@ -276,9 +276,9 @@
 
 .slides {
   display: flex;
-  width: 500vw;
+  width: 500vw; /* 5 images */
   height: 100%;
-  animation: slideImages 15s infinite ease-in-out;
+  animation: slideImages 25s infinite ease-in-out;
 }
 
 .slides img {
@@ -288,9 +288,11 @@
 }
 
 @keyframes slideImages {
-  0%, 20% { transform: translateX(0); }
-  33%, 53% { transform: translateX(-100vw); }
-  66%, 86% { transform: translateX(-200vw); }
+  0%, 15% { transform: translateX(0); }
+  20%, 35% { transform: translateX(-100vw); }
+  40%, 55% { transform: translateX(-200vw); }
+  60%, 75% { transform: translateX(-300vw); }
+  80%, 95% { transform: translateX(-400vw); }
   100% { transform: translateX(0); }
 }
 
