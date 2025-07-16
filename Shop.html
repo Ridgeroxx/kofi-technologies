@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop | Kofi N. Technologies</title>
+  <meta name="description" content="Shop automatic gates, garage doors, electric fences, and smart security products in Ghana." />
+  <meta name="keywords" content="Automatic gates Ghana, Garage doors, Electric fences, CCTV Ghana, Security systems" />
+  <meta name="author" content="Kofi N. Technologies" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2563eb" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Shop | Kofi N. Technologies" />
+  <meta property="og:description" content="Explore our range of secure and modern automated gates, fences, and security systems." />
+  <meta property="og:image" content="https://www.kofintechnologies.com/images/Kofi%20N.%20Tech.jpeg" />
+  <meta property="og:url" content="https://www.kofintechnologies.com/shop.html" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Shop | Kofi N. Technologies" />
+  <meta property="twitter:description" content="Explore our premium security solutions." />
+  <meta property="twitter:image" content="https://www.kofintechnologies.com/images/Kofi%20N.%20Tech.jpeg" />
+
+  <!-- Font Awesome & Tailwind CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Navbar -->
+  <!-- Responsive Navbar -->
+<header class="bg-white shadow sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="/" class="text-xl font-bold text-blue-700">Kofi N. Technologies</a>
+
+    <!-- Hamburger button (mobile) -->
+    <button id="menu-btn" class="text-blue-700 md:hidden text-2xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Nav links -->
+    <nav id="menu" class="hidden md:flex space-x-6 font-medium text-sm">
+      <a href="index.html" class="hover:text-blue-600">Home</a>
+      <a href="shop.html" class="hover:text-blue-600">Shop</a>
+      <a href="aboutus.html" class="hover:text-blue-600">About Us</a>
+      <a href="media.html" class="hover:text-blue-600">Media</a>
+      <a href="contact.html" class="hover:text-blue-600">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu (dropdown) -->
+  <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+    <a href="index.html" class="block py-2 text-sm text-gray-700 hover:text-blue-600">Home</a>
+    <a href="shop.html" class="block py-2 text-sm text-gray-700 hover:text-blue-600">Shop</a>
+    <a href="aboutus.html" class="block py-2 text-sm text-gray-700 hover:text-blue-600">About Us</a>
+    <a href="media.html" class="block py-2 text-sm text-gray-700 hover:text-blue-600">Media</a>
+    <a href="contact.html" class="block py-2 text-sm text-gray-700 hover:text-blue-600">Contact</a>
+  </div>
+
+  <!-- JS for toggling -->
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</header>
+
+
+  <!-- Hero / Banner -->
+  <section class="bg-blue-50 py-12 text-center">
+    <h1 class="text-3xl md:text-5xl font-bold text-blue-700">Our Products</h1>
+    <p class="mt-4 text-gray-600 text-lg">Explore secure, durable, and smart solutions made for Ghanaian homes & businesses.</p>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="max-w-7xl mx-auto px-4 py-12 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    <!-- Product Item -->
+    <div class="bg-white border rounded-lg shadow hover:shadow-lg transition">
+      <img src="images/automated-gate.jpeg" alt="Automated Gate" class="w-full h-52 object-cover rounded-t-lg">
+      <div class="p-4">
+        <h3 class="font-semibold text-lg mb-2">Automated Gate</h3>
+        <p class="text-sm text-gray-600 mb-4">Modern remote-controlled gates for homes and offices.</p>
+        <a href="https://wa.me/233241588134?text=I'm%20interested%20in%20Automated%20Gates" class="text-blue-600 font-medium hover:underline">Request Installation</a>
+      </div>
+    </div>
+
+    <!-- Product Item -->
+    <div class="bg-white border rounded-lg shadow hover:shadow-lg transition">
+      <img src="images/electric-fence.jpg" alt="Electric Fence System" class="w-full h-52 object-cover rounded-t-lg">
+      <div class="p-4">
+        <h3 class="font-semibold text-lg mb-2">Electric Fence</h3>
+        <p class="text-sm text-gray-600 mb-4">Powerful perimeter protection with alarm integration.</p>
+        <a href="https://wa.me/233241588134?text=I'm%20interested%20in%20Electric%20Fence%20systems" class="text-blue-600 font-medium hover:underline">Request Installation</a>
+      </div>
+    </div>
+
+    <!-- Product Item -->
+    <div class="bg-white border rounded-lg shadow hover:shadow-lg transition">
+      <img src="images/shutter.jpeg" alt="Roller Shutter" class="w-full h-52 object-cover rounded-t-lg">
+      <div class="p-4">
+        <h3 class="font-semibold text-lg mb-2">Roller Shutters</h3>
+        <p class="text-sm text-gray-600 mb-4">Protect storefronts & garages with automated shutters.</p>
+        <a href="https://wa.me/233241588134?text=I'm%20interested%20in%20Roller%20Shutters" class="text-blue-600 font-medium hover:underline">Request Installation</a>
+      </div>
+    </div>
+
+    <!-- Add more products as needed -->
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="font-bold text-lg mb-2">Kofi N. Technologies</h3>
+        <p>Automated gates, electric fences, and smart security for your peace of mind.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Quick Links</h4>
+        <ul class="space-y-1 text-sm">
+          <li><a href="index.html" class="hover:underline">Home</a></li>
+          <li><a href="about.html" class="hover:underline">About Us</a></li>
+          <li><a href="media.html" class="hover:underline">Media</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Contact</h4>
+        <ul class="text-sm space-y-1">
+          <li>📍 Adenta-Dodowa Rd, Accra</li>
+          <li>📞 +233 241 588 134</li>
+          <li>📧 info@kofintechnologies.com</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Business Hours</h4>
+        <p class="text-sm">Mon - Sat: 8:00 AM – 8:00 PM</p>
+      </div>
+    </div>
+    <div class="bg-gray-800 text-center py-4 text-sm text-gray-300">
+      &copy; 2025 Kofi N. Technologies. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
