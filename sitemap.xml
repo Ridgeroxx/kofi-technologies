@@ -2,27 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://www.kofintechnologies.com/</loc>
+    <loc>https://www.kofintechnologies.com/index.html</loc>
     <priority>1.00</priority>
   </url>
 
   <url>
-    <loc>https://www.kofintechnologies.com/shop</loc>
+    <loc>https://www.kofintechnologies.com/Shop.html</loc>
     <priority>0.90</priority>
   </url>
 
   <url>
-    <loc>https://www.kofintechnologies.com/aboutus</loc>
+    <loc>https://www.kofintechnologies.com/aboutus.html</loc>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://www.kofintechnologies.com/media</loc>
+    <loc>https://www.kofintechnologies.com/media.html</loc>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.kofintechnologies.com/contact</loc>
+    <loc>https://www.kofintechnologies.com/contact.html</loc>
     <priority>0.80</priority>
   </url>
 
