@@ -288,39 +288,32 @@
     // If these files live beside media.html, keep as below.
     // If you moved them to /videos/, change src: 'videos/automated-gate.mp4', etc.
     const VIDEOS = [
-      {
-        id:'automated-gate',
-        title:'Automated Gate Demo',
-        cat:'Gate Automation',
-        src:'videos/automated-gate.mp4',
-        poster:'videos/automated-gate.mp4',
-        desc:'Smooth open/close with remotes and safety sensors.'
-      },
-      {
-        id:'cctv-vid',
-        title:'CCTV System Overview',
-        cat:'CCTV',
-        src:'cctv-vid.mp4',
-        poster:'videos/cctv-vid.mp4',
-        desc:'Camera coverage, NVR, and remote viewing.'
-      },
-      {
-        id:'electric-gate',
-        title:'Electric Gate Operation',
-        cat:'Gate Automation',
-        src:'electric-gate.mp4',
-        poster:'videos/electric-gate.mp4',
-        desc:'Powerful gate motor kit for wide entrances.'
-      },
-      {
-        id:'gate1-vid',
-        title:'Gate Installation Timelapse',
-        cat:'Gate Automation',
-        src:'gate1-vid.mp4',
-        poster:'videos/gate1-vid.mp4',
-        desc:'Installation highlights from site prep to handover.'
-      }
-    ];
+  { id:'automated-gate', title:'Automated Gate Demo',  cat:'Gate Automation',
+    src:'automated-gate.mp4', poster:'images/g1.jpeg',
+    desc:'Smooth open/close with remotes and safety sensors.',
+    uploaded:'2025-08-10',             // YYYY-MM-DD or full ISO date-time
+    duration:'PT45S'                    // ISO 8601, e.g., PT45S, PT1M20S
+  },
+  { id:'cctv-vid', title:'CCTV System Overview', cat:'CCTV',
+    src:'cctv-vid.mp4', poster:'images/g4.jpeg',
+    desc:'Camera coverage, NVR, and remote viewing.',
+    uploaded:'2025-08-09',
+    duration:'PT1M10S'
+  },
+  { id:'electric-gate', title:'Electric Gate Operation', cat:'Gate Automation',
+    src:'electric-gate.mp4', poster:'images/g2.jpeg',
+    desc:'Powerful gate motor kit for wide entrances.',
+    uploaded:'2025-08-08',
+    duration:'PT52S'
+  },
+  { id:'gate1-vid', title:'Gate Installation Timelapse', cat:'Gate Automation',
+    src:'gate1-vid.mp4', poster:'images/g3.jpeg',
+    desc:'Installation highlights from site prep to handover.',
+    uploaded:'2025-08-07',
+    duration:'PT38S'
+  }
+];
+
 
     // ===== Render videos =====
     const vgrid = document.getElementById('vgrid');
@@ -460,20 +453,22 @@
 
     // ===== JSON-LD: VideoObject for local MP4s =====
     (function injectVideosLD(){
-      const base = location.origin + location.pathname + '#v-';
-      const graph = VIDEOS.map(v => ({
-        "@type":"VideoObject",
-        "name": v.title,
-        "description": v.desc,
-        "thumbnailUrl": location.origin + '/' + v.poster.replace(/^\/?/,''),
-        "contentUrl": location.origin + '/' + v.src.replace(/^\/?/,''),
-        "publisher": { "@type":"Organization","name":"Kofi N. Technologies" }
-      }));
-      const ld = { "@context":"https://schema.org", "@graph": graph };
-      const s = document.createElement('script');
-      s.type='application/ld+json'; s.textContent = JSON.stringify(ld);
-      document.head.appendChild(s);
-    })();
+  const graph = VIDEOS.map(v => ({
+    "@type": "VideoObject",
+    "name": v.title,
+    "description": v.desc,
+    "thumbnailUrl": location.origin + '/' + v.poster.replace(/^\/?/, ''),
+    "contentUrl":  location.origin + '/' + v.src.replace(/^\/?/, ''),
+    "uploadDate":  (v.uploaded || new Date().toISOString()),
+    ...(v.duration ? { "duration": v.duration } : {}),
+    "publisher":   { "@type": "Organization", "name": "Kofi N. Technologies" }
+  }));
+  const ld = { "@context":"https://schema.org", "@graph": graph };
+  const s = document.createElement('script');
+  s.type = 'application/ld+json';
+  s.textContent = JSON.stringify(ld);
+  document.head.appendChild(s);
+})();
   </script>
 </body>
 </html>
