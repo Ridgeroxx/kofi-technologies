@@ -288,33 +288,39 @@
     // If these files live beside media.html, keep as below.
     // If you moved them to /videos/, change src: 'videos/automated-gate.mp4', etc.
     const VIDEOS = [
-  { id:'automated-gate', title:'Automated Gate Demo',  cat:'Gate Automation',
-    src:'automated-gate.mp4', poster:'images/g1.jpeg',
-    desc:'Smooth open/close with remotes and safety sensors.',
-    uploaded:'2025-08-10',             // YYYY-MM-DD or full ISO date-time
-    duration:'PT45S'                    // ISO 8601, e.g., PT45S, PT1M20S
+  {
+    id: 'automated-gate',
+    title: 'Automated Gate Demo',
+    cat: 'Gate Automation',
+    src: 'videos/gate-auto-demo.mp4',
+    poster: 'images/g1.jpeg',
+    desc: 'Smooth open/close with remotes and safety sensors.'
   },
-  { id:'cctv-vid', title:'CCTV System Overview', cat:'CCTV',
-    src:'cctv-vid.mp4', poster:'images/g4.jpeg',
-    desc:'Camera coverage, NVR, and remote viewing.',
-    uploaded:'2025-08-09',
-    duration:'PT1M10S'
+  {
+    id: 'cctv-vid',
+    title: 'CCTV System Overview',
+    cat: 'CCTV',
+    src: 'videos/cctv-system-mobile.mp4',
+    poster: 'images/g4.jpeg',
+    desc: 'Camera coverage, NVR, and remote viewing.'
   },
-  { id:'electric-gate', title:'Electric Gate Operation', cat:'Gate Automation',
-    src:'electric-gate.mp4', poster:'images/g2.jpeg',
-    desc:'Powerful gate motor kit for wide entrances.',
-    uploaded:'2025-08-08',
-    duration:'PT52S'
+  {
+    id: 'electric-gate',
+    title: 'Electric Gate Operation',
+    cat: 'Gate Automation',
+    src: 'videos/electric-gate-demo.mp4',
+    poster: 'images/g2.jpeg',
+    desc: 'Powerful gate motor kit for wide entrances.'
   },
-  { id:'gate1-vid', title:'Gate Installation Timelapse', cat:'Gate Automation',
-    src:'gate1-vid.mp4', poster:'images/g3.jpeg',
-    desc:'Installation highlights from site prep to handover.',
-    uploaded:'2025-08-07',
-    duration:'PT38S'
+  {
+    id: 'gate1-vid',
+    title: 'Gate Installation Timelapse',
+    cat: 'Gate Automation',
+    src: 'videos/gate-field-test.mp4',
+    poster: 'images/g3.jpeg',
+    desc: 'Installation highlights from site prep to handover.'
   }
 ];
-
-
     // ===== Render videos =====
     const vgrid = document.getElementById('vgrid');
     const vempty = document.getElementById('vempty');
