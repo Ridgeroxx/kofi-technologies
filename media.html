@@ -24,18 +24,15 @@
   <meta name="twitter:description" content="See videos and photos from installations across Ghana." />
   <meta name="twitter:image" content="https://www.kofintechnologies.com/images/g7.png" />
 
-  <!-- Icons (place files in site ROOT) -->
+  <!-- Icons -->
   <link rel="icon" href="/images/glogo.png" />
   <link rel="icon" type="image/png" href="/images/glogo.png" />
   <link rel="apple-touch-icon" href="/images/glogo.png" />
-
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
   <style>
     :root{
-      --ink:#0b1220;--muted:#6b7280;--ring:#e5e7eb;--accent:#2563eb;--brand:#111827;--bg:#fff;--soft:#f5f7fa;--cyan:#00FFD1;
-      --blue:#1e3a8a;
+      --ink:#0b1220;--muted:#6b7280;--ring:#e5e7eb;--accent:#2563eb;--brand:#111827;--bg:#fff;--soft:#f5f7fa;--cyan:#00FFD1;--blue:#1e3a8a;
     }
     *{box-sizing:border-box}
     html:focus-within{scroll-behavior:smooth}
@@ -58,7 +55,7 @@
       .nav-toggle{display:block}
     }
 
-    /* Page header */
+    /* Header */
     .page-hero{background:#eff6ff;border-bottom:1px solid var(--ring);padding:52px 0;text-align:center}
     .page-hero h1{margin:0 0 .4rem;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--blue)}
     .page-hero p{margin:0;color:#475569}
@@ -95,7 +92,7 @@
     .btn:hover{transform:translateY(-1px)}
     .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
 
-    /* Modal for video quick-view */
+    /* Modal */
     .modal{position:fixed;inset:0;background:rgba(2,6,23,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:70}
     .modal.open{display:flex}
     .modal-card{background:#fff;border-radius:14px;max-width:960px;width:100%;display:grid;grid-template-columns:1fr;overflow:hidden}
@@ -103,7 +100,7 @@
     .modal-body{padding:14px}
     .close{background:none;border:none;font-size:1.3rem;cursor:pointer}
 
-    /* Photo gallery */
+    /* Photos */
     .pg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     @media (max-width:1024px){.pg{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:640px){.pg{grid-template-columns:1fr}}
@@ -167,12 +164,11 @@
   </header>
 
   <!-- Videos -->
-  <section class="section">
+  <section class="section" id="videos">
     <div class="container">
       <h2 class="section-title">Installation & Demo Videos</h2>
-      <p class="section-sub">Local videos (fast & private). Click to play, quick-view, or copy a share link.</p>
+      <p class="section-sub">Local videos (fast & private). Click to quick-view, open a watch page, or copy a share link.</p>
 
-      <!-- Filters -->
       <div class="toolbar" role="group" aria-label="Filter videos">
         <div class="chips">
           <button class="chip active" data-cat="all">All</button>
@@ -184,7 +180,6 @@
         </div>
       </div>
 
-      <!-- Grid -->
       <div id="vgrid" class="grid" aria-live="polite"></div>
       <div id="vempty" style="display:none;text-align:center;color:#6b7280;padding:20px">No videos found for this filter.</div>
     </div>
@@ -197,12 +192,12 @@
       <p class="section-sub">Real installations, real results. Click any photo to view.</p>
 
       <div class="pg" id="pg">
-        <a class="ph" data-index="0"><picture><source srcset="images/g1.jpeg" type="image/webp"><img src="images/g1.jpeg" alt="Modern automated gate in Accra" loading="lazy" width="1200" height="800"></picture></a>
-        <a class="ph" data-index="1"><picture><source srcset="images/g2.jpeg" type="image/webp"><img src="images/g2.jpeg" alt="Electric fence wiring with backup" loading="lazy" width="1200" height="800"></picture></a>
-        <a class="ph" data-index="2"><picture><source srcset="images/g3.jpeg" type="image/webp"><img src="images/g3.jpeg" alt="Roller shutter installation at a business" loading="lazy" width="1200" height="800"></picture></a>
-        <a class="ph" data-index="3"><picture><source srcset="images/g4.jpeg" type="image/webp"><img src="images/g4.jpeg" alt="CCTV surveillance camera setup" loading="lazy" width="1200" height="800"></picture></a>
-        <a class="ph" data-index="4"><picture><source srcset="images/g5.jpeg" type="image/webp"><img src="images/g5.jpeg" alt="Remote controlled garage door with sensors" loading="lazy" width="1200" height="800"></picture></a>
-        <a class="ph" data-index="5"><picture><source srcset="images/g6.jpeg" type="image/webp"><img src="images/g6.jpeg" alt="Intercom security system at residence" loading="lazy" width="1200" height="800"></picture></a>
+        <a class="ph" data-index="0"><picture><img src="images/g1.jpeg" alt="Modern automated gate in Accra" loading="lazy" width="1200" height="800"></picture></a>
+        <a class="ph" data-index="1"><picture><img src="images/g2.jpeg" alt="Electric fence wiring with backup" loading="lazy" width="1200" height="800"></picture></a>
+        <a class="ph" data-index="2"><picture><img src="images/g3.jpeg" alt="Roller shutter installation at a business" loading="lazy" width="1200" height="800"></picture></a>
+        <a class="ph" data-index="3"><picture><img src="images/g4.jpeg" alt="CCTV surveillance camera setup" loading="lazy" width="1200" height="800"></picture></a>
+        <a class="ph" data-index="4"><picture><img src="images/g5.jpeg" alt="Remote controlled garage door with sensors" loading="lazy" width="1200" height="800"></picture></a>
+        <a class="ph" data-index="5"><picture><img src="images/g6.jpeg" alt="Intercom security system at residence" loading="lazy" width="1200" height="800"></picture></a>
       </div>
     </div>
   </section>
@@ -218,8 +213,9 @@
         </div>
         <p id="vmdesc" class="vmeta" style="margin:.4rem 0 0"></p>
         <div class="vactions" style="margin-top:8px">
-          <button class="btn" id="vmshare"><i class="fas fa-link"></i> Copy link</button>
+          <a class="btn" id="vmwatch" target="_blank" rel="noopener"><i class="fas fa-play-circle"></i> Watch page</a>
           <a class="btn primary" id="vmdownload" download><i class="fas fa-download"></i> Download</a>
+          <button class="btn" id="vmshare"><i class="fas fa-link"></i> Copy link</button>
         </div>
       </div>
     </div>
@@ -281,51 +277,56 @@
       navMenu.classList.toggle('active');
     });
 
-    // ===== Year =====
+    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // ===== Local videos data (using your filenames) =====
-    // If these files live beside media.html, keep as below.
-    // If you moved them to /videos/, change src: 'videos/automated-gate.mp4', etc.
+    // ===== Local videos (use ad-block-safe file names in /videos/) =====
     const VIDEOS = [
-  {
-    id: 'automated-gate',
-    title: 'Automated Gate Demo',
-    cat: 'Gate Automation',
-    src: 'videos/gate-auto-demo.mp4',
-    poster: 'images/g1.jpeg',
-    desc: 'Smooth open/close with remotes and safety sensors.'
-  },
-  {
-    id: 'cctv-vid',
-    title: 'CCTV System Overview',
-    cat: 'CCTV',
-    src: 'videos/cctv-system-mobile.mp4',
-    poster: 'images/g4.jpeg',
-    desc: 'Camera coverage, NVR, and remote viewing.'
-  },
-  {
-    id: 'electric-gate',
-    title: 'Electric Gate Operation',
-    cat: 'Gate Automation',
-    src: 'videos/electric-gate-demo.mp4',
-    poster: 'images/g2.jpeg',
-    desc: 'Powerful gate motor kit for wide entrances.'
-  },
-  {
-    id: 'gate1-vid',
-    title: 'Gate Installation Timelapse',
-    cat: 'Gate Automation',
-    src: 'videos/gate-field-test.mp4',
-    poster: 'images/g3.jpeg',
-    desc: 'Installation highlights from site prep to handover.'
-  }
-];
+      {
+        id:'automated-gate',
+        title:'Automated Gate Demo',
+        cat:'Gate Automation',
+        src:'videos/gate-auto-demo.mp4',
+        poster:'images/g1.jpeg',
+        desc:'Smooth open/close with remotes and safety sensors.',
+        uploaded:'2025-08-10', duration:'PT45S'
+      },
+      {
+        id:'cctv-vid',
+        title:'CCTV System Overview',
+        cat:'CCTV',
+        src:'videos/cctv-system-mobile.mp4',
+        poster:'images/g4.jpeg',
+        desc:'Camera coverage, NVR, and remote viewing.',
+        uploaded:'2025-08-09', duration:'PT1M10S'
+      },
+      {
+        id:'electric-gate',
+        title:'Electric Gate Operation',
+        cat:'Gate Automation',
+        src:'videos/electric-gate-demo.mp4',
+        poster:'images/g2.jpeg',
+        desc:'Powerful gate motor kit for wide entrances.',
+        uploaded:'2025-08-08', duration:'PT52S'
+      },
+      {
+        id:'gate1-vid',
+        title:'Gate Installation Timelapse',
+        cat:'Gate Automation',
+        src:'videos/gate-field-test.mp4',
+        poster:'images/g3.jpeg',
+        desc:'Installation highlights from site prep to handover.',
+        uploaded:'2025-08-07', duration:'PT38S'
+      }
+    ];
+
     // ===== Render videos =====
     const vgrid = document.getElementById('vgrid');
     const vempty = document.getElementById('vempty');
     const chips = Array.from(document.querySelectorAll('.chip[data-cat]'));
     let vstate = { cat:'all' };
+
+    function watchUrl(v){ return `watch-${v.id}.html`; }
 
     function vCardHTML(v){
       return `
@@ -339,6 +340,7 @@
             <div class="vmeta">${v.cat}</div>
             <div class="vactions">
               <button class="btn" data-open="${v.id}"><i class="fas fa-eye"></i> Quick View</button>
+              <a class="btn" href="${watchUrl(v)}"><i class="fas fa-play-circle"></i> Watch page</a>
               <a class="btn primary" href="${v.src}" download><i class="fas fa-download"></i> Download</a>
               <button class="btn" data-copy="${v.id}"><i class="fas fa-link"></i> Copy Link</button>
             </div>
@@ -349,13 +351,13 @@
 
     function renderVideos(){
       const items = VIDEOS.filter(v => vstate.cat==='all' || v.cat===vstate.cat);
-      vgrid.innerHTML = items.map(v => vCardHTML(v)).join('');
+      vgrid.innerHTML = items.map(vCardHTML).join('');
       vempty.style.display = items.length ? 'none' : 'block';
 
-      // bind actions
+      // Bind actions
       items.forEach(v=>{
         document.querySelectorAll(`[data-open="${v.id}"]`).forEach(el=>el.addEventListener('click',()=>openModal(v.id,true)));
-        document.querySelector(`[data-copy="${v.id}"]`)?.addEventListener('click',()=>copyLink('#v-'+v.id));
+        document.querySelector(`[data-copy="${v.id}"]`)?.addEventListener('click',()=>copyLink(watchUrl(v)));
       });
     }
 
@@ -366,14 +368,15 @@
       renderVideos();
     }));
 
-    // ===== Video modal (plays local MP4) =====
+    // ===== Video modal =====
     const vmodal = document.getElementById('vmodal');
     const vmmedia = document.getElementById('vmmedia');
     const vmtitle = document.getElementById('vmtitle');
     const vmdesc = document.getElementById('vmdesc');
     const vmclose = document.getElementById('vmclose');
-    const vmshare = document.getElementById('vmshare');
     const vmdownload = document.getElementById('vmdownload');
+    const vmwatch = document.getElementById('vmwatch');
+    const vmshare = document.getElementById('vmshare');
 
     function openModal(id, autoplay){
       const v = VIDEOS.find(x=>x.id===id);
@@ -381,6 +384,7 @@
       vmtitle.textContent = v.title;
       vmdesc.textContent = v.desc + ' • ' + v.cat;
       vmdownload.href = v.src;
+      vmwatch.href = watchUrl(v);
       const auto = autoplay ? ' autoplay' : '';
       vmmedia.innerHTML = `
         <video controls playsinline preload="none" poster="${v.poster}" style="width:100%;height:100%"${auto}>
@@ -388,7 +392,8 @@
           Your browser does not support the video tag.
         </video>`;
       vmodal.classList.add('open');
-      location.hash = 'v-'+v.id; // shareable
+      location.hash = 'v-'+v.id; // shareable fragment
+      vmshare.onclick = () => copyLink(watchUrl(v));
     }
     function closeModal(){ vmodal.classList.remove('open'); vmmedia.innerHTML=''; }
     vmclose.addEventListener('click', closeModal);
@@ -405,13 +410,14 @@
     });
 
     // Copy helpers
-    async function copyLink(fragment=''){
+    async function copyLink(pathOrUrl=''){
+      const url = pathOrUrl.startsWith('http') ? pathOrUrl : (location.origin + '/' + pathOrUrl.replace(/^\/?/,''));
       try{
-        await navigator.clipboard.writeText(location.origin + location.pathname + fragment);
+        await navigator.clipboard.writeText(url);
         alert('Link copied!');
       }catch{ alert('Copy failed'); }
     }
-    document.getElementById('copyPage').addEventListener('click', ()=>copyLink());
+    document.getElementById('copyPage').addEventListener('click', ()=>copyLink(location.origin + location.pathname));
 
     // ===== Photo lightbox =====
     const photos = [
@@ -454,27 +460,32 @@
       if(e.key==='ArrowRight') next();
     });
 
-    // ===== Initial render =====
+    // Initial render
     renderVideos();
 
-    // ===== JSON-LD: VideoObject for local MP4s =====
+    // ===== JSON-LD: VideoObject for local MP4s (adds uploadDate/duration) =====
     (function injectVideosLD(){
-  const graph = VIDEOS.map(v => ({
-    "@type": "VideoObject",
-    "name": v.title,
-    "description": v.desc,
-    "thumbnailUrl": location.origin + '/' + v.poster.replace(/^\/?/, ''),
-    "contentUrl":  location.origin + '/' + v.src.replace(/^\/?/, ''),
-    "uploadDate":  (v.uploaded || new Date().toISOString()),
-    ...(v.duration ? { "duration": v.duration } : {}),
-    "publisher":   { "@type": "Organization", "name": "Kofi N. Technologies" }
-  }));
-  const ld = { "@context":"https://schema.org", "@graph": graph };
-  const s = document.createElement('script');
-  s.type = 'application/ld+json';
-  s.textContent = JSON.stringify(ld);
-  document.head.appendChild(s);
-})();
+      const graph = VIDEOS.map(v => ({
+        "@type": "VideoObject",
+        "name": v.title,
+        "description": v.desc,
+        "thumbnailUrl": location.origin + '/' + v.poster.replace(/^\/?/, ''),
+        "contentUrl":  location.origin + '/' + v.src.replace(/^\/?/, ''),
+        "uploadDate":  (v.uploaded ? new Date(v.uploaded).toISOString() : new Date().toISOString()),
+        ...(v.duration ? { "duration": v.duration } : {}),
+        "url": location.origin + '/' + watchUrl(v),
+        "publisher":   { "@type": "Organization", "name": "Kofi N. Technologies" },
+        "potentialAction": {
+          "@type":"WatchAction",
+          "target": { "@type":"EntryPoint", "urlTemplate": location.origin + '/' + watchUrl(v) }
+        }
+      }));
+      const ld = { "@context":"https://schema.org", "@graph": graph };
+      const s = document.createElement('script');
+      s.type = 'application/ld+json';
+      s.textContent = JSON.stringify(ld);
+      document.head.appendChild(s);
+    })();
   </script>
 </body>
 </html>
