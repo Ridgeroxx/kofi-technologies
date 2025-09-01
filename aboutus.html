@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Base -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>About Us | Kofi N. Technologies — Automated Gates & Smart Security in Ghana</title>
+  <meta name="description" content="Learn about Kofi N. Technologies — Ghana’s trusted team for automated gates, electric fences, garage doors, CCTV, and access control. Our mission, values, and approach." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="canonical" href="https://www.kofintechnologies.com/aboutus.html" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="About Us — Kofi N. Technologies" />
+  <meta property="og:description" content="Our mission, values, and quality promise in gate automation and smart security across Ghana." />
+  <meta property="og:url" content="https://www.kofintechnologies.com/aboutus.html" />
+  <meta property="og:image" content="https://www.kofintechnologies.com/images/g7.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Us — Kofi N. Technologies" />
+  <meta name="twitter:description" content="Ghana’s trusted provider of automated gates, electric fences, CCTV & access control." />
+  <meta name="twitter:image" content="https://www.kofintechnologies.com/images/g7.png" />
+
+  <!-- Icons (place files in site ROOT) -->
+  <link rel="icon" href="/images/glogo.png" />
+  <link rel="icon" type="image/png" href="/images/glogo.png" />
+  <link rel="apple-touch-icon" href="/images/glogo.png" />
+
+  <!-- Icons / Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --ink:#0b1220;--muted:#6b7280;--ring:#e5e7eb;--accent:#2563eb;--brand:#111827;--bg:#fff;--soft:#f5f7fa;--cyan:#00FFD1;--blue:#1e3a8a;
+    }
+    *{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;height:auto;display:block}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+    /* NAV */
+    .navbar{position:sticky;top:0;z-index:50;background:#111;color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+    .brand{font-weight:900;color:var(--cyan)}
+    .nav-links{display:flex;gap:1.2rem;list-style:none;margin:0;padding:0}
+    .nav-links a{color:#fff;font-weight:700}
+    .nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--cyan);text-decoration:underline}
+    .nav-toggle{display:none;background:none;border:none;color:#fff;font-size:1.8rem}
+    @media (max-width:768px){
+      .nav-links{display:none;flex-direction:column;position:absolute;left:0;top:100%;width:100%;background:#111;padding:1rem;border-top:1px solid rgba(255,255,255,.08)}
+      .nav-links.active{display:flex}
+      .nav-toggle{display:block}
+    }
+
+    /* Header / Hero */
+    .page-hero{position:relative;background:#eff6ff;border-bottom:1px solid var(--ring);padding:52px 0}
+    .breadcrumbs{font-size:.9rem;color:#64748b;padding:.75rem 0}
+    .breadcrumbs a{color:var(--accent)}
+    .breadcrumbs .sep{margin:0 .4rem;color:#94a3b8}
+    .hero-wrap{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+    .hero-title{margin:0 0 .4rem;font-size:clamp(1.8rem,3.2vw,2.6rem);color:var(--blue)}
+    .hero-sub{margin:0;color:#475569}
+    .hero-media{border-radius:14px;overflow:hidden;box-shadow:0 10px 24px rgba(2,6,23,.08)}
+    @media(max-width:900px){.hero-wrap{grid-template-columns:1fr}}
+
+    /* Sections */
+    .section{padding:42px 0}
+    .section-title{text-align:center;font-size:1.9rem;color:var(--blue);margin:0 0 .25rem}
+    .section-sub{text-align:center;margin:0 0 16px;color:#475569}
+
+    /* Two-column text */
+    .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center}
+    @media(max-width:980px){.cols{grid-template-columns:1fr}}
+
+    /* Feature list */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media(max-width:980px){.features{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.features{grid-template-columns:1fr}}
+    .fcard{border:1px solid var(--ring);border-radius:14px;padding:16px;background:#fff;box-shadow:0 8px 20px rgba(2,6,23,.05)}
+    .fcard h3{margin:.1rem 0 .25rem}
+    .fcard p{margin:0;color:var(--muted)}
+    .icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;background:rgba(37,99,235,.1);color:var(--accent);margin-bottom:.5rem}
+
+    /* Stats */
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    @media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
+    .stat{border:1px solid var(--ring);border-radius:12px;padding:14px;text-align:center;background:#fff}
+    .stat .n{font-size:1.6rem;font-weight:900;color:#111827}
+    .stat .t{color:#6b7280}
+
+    /* Timeline */
+    .timeline{border-left:2px solid var(--ring);padding-left:16px;margin-left:6px}
+    .tl{margin-bottom:16px}
+    .tl .dot{width:12px;height:12px;border-radius:9999px;background:var(--accent);display:inline-block;position:relative;left:-23px}
+    .tl h4{margin:.25rem 0 0}
+    .tl p{margin:.25rem 0 0;color:#6b7280}
+
+    /* CTA band */
+    .cta{background:linear-gradient(90deg,#111827,#1f2937);color:#fff;border-radius:14px;padding:18px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+    .btn{display:inline-flex;align-items:center;gap:.45rem;border:1px solid var(--ring);border-radius:.6rem;padding:.55rem .9rem;background:#fff;color:#111827;cursor:pointer;font-weight:900}
+    .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+    .btn:hover{transform:translateY(-1px)}
+
+    /* FAQ */
+    .faq{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media(max-width:900px){.faq{grid-template-columns:1fr}}
+    .qa{border:1px solid var(--ring);border-radius:12px;background:#fff;padding:14px}
+    .qa h4{margin:0 0 .35rem}
+    .qa p{margin:0;color:#6b7280}
+
+    /* Footer */
+    .footer{background:#101820;color:#fff;margin-top:40px}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+    .footer-title{font-weight:900;color:var(--cyan)}
+    .footer-links{list-style:none;margin:0;padding:0}
+    .footer-links li{margin:.35rem 0}
+    .footer a:hover{color:var(--cyan)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.1);text-align:center;padding:14px;color:#94a3b8;font-size:.9rem}
+  </style>
+
+  <!-- JSON-LD: Breadcrumbs -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.kofintechnologies.com/"},
+    {"@type":"ListItem","position":2,"name":"About Us","item":"https://www.kofintechnologies.com/aboutus.html"}
+  ]}
+  </script>
+
+  <!-- JSON-LD: Organization (concise) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "@id":"https://www.kofintechnologies.com/#org",
+    "name":"Kofi N. Technologies",
+    "url":"https://www.kofintechnologies.com/",
+    "logo":"https://www.kofintechnologies.com/images/glogo.png",
+    "contactPoint":{
+      "@type":"ContactPoint",
+      "telephone":"+233241588134",
+      "email":"info@kofintechnologies.com",
+      "contactType":"customer service",
+      "areaServed":"GH"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Do you do site inspections before installation?","acceptedAnswer":{"@type":"Answer","text":"Yes. We offer free site inspections in Accra and nearby areas to assess gate size, power access, terrain, and security requirements."}},
+    {"@type":"Question","name":"What payment options do you accept?","acceptedAnswer":{"@type":"Answer","text":"We accept Mobile Money and bank payment. For larger projects, milestone payments are available."}},
+    {"@type":"Question","name":"What is your warranty?","acceptedAnswer":{"@type":"Answer","text":"Our installations include up to 2 years warranty, covering workmanship and manufacturer defects under normal use."}}
+  ]}
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" role="navigation" aria-label="Primary">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Kofi N. Technologies</a>
+      <ul class="nav-links" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="aboutus.html" aria-current="page">About Us</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span class="sep">›</span> <span aria-current="page">About Us</span>
+      </nav>
+      <div class="hero-wrap">
+        <div>
+          <h1 class="hero-title">Built for reliability. Driven by service.</h1>
+          <p class="hero-sub">We engineer automation and security systems that work beautifully in Ghana’s real-world conditions — from heavy rains to dusty sites and high traffic.</p>
+        </div>
+        <div class="hero-media">
+          <picture>
+            <source srcset="images/g7.webp" type="image/webp">
+            <img src="images/g7.png" alt="Gate automation and smart security in Ghana" loading="eager" width="1200" height="800">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHO WE ARE -->
+  <section class="section">
+    <div class="container cols">
+      <div>
+        <h2 class="section-title" style="text-align:left">Who We Are</h2>
+        <p>We are a Ghanaian-owned team delivering automated gates, electric fences, garage doors, CCTV, and access control. Our mission is to make advanced access solutions simple, durable, and affordable for homes and businesses across Ghana.</p>
+        <div class="features" style="margin-top:16px">
+          <div class="fcard">
+            <div class="icon"><i class="fas fa-shield-halved"></i></div>
+            <h3>Security & Reliability</h3>
+            <p>Hardware and install standards that minimize failures and false alarms.</p>
+          </div>
+          <div class="fcard">
+            <div class="icon"><i class="fas fa-screwdriver-wrench"></i></div>
+            <h3>Expert Installation</h3>
+            <p>Experienced technicians, clean cabling, and precise configuration.</p>
+          </div>
+          <div class="fcard">
+            <div class="icon"><i class="fas fa-mobile-screen"></i></div>
+            <h3>Smart Controls</h3>
+            <p>Remote access, intercoms, app control, and tamper alerts.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <picture>
+          <source srcset="images/Technician.png" type="image/webp">
+          <img src="images/Technician.png" alt="Technician installing an automated gate" loading="lazy" width="1200" height="900" style="border-radius:14px;box-shadow:0 10px 24px rgba(2,6,23,.08)">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section" style="background:var(--soft)">
+    <div class="container">
+      <div class="stats">
+        <div class="stat"><div class="n">10+ yrs</div><div class="t">Experience</div></div>
+        <div class="stat"><div class="n">150+</div><div class="t">Installations</div></div>
+        <div class="stat"><div class="n">5+ Regions</div><div class="t">Coverage</div></div>
+        <div class="stat"><div class="n">2 years</div><div class="t">Warranty</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section class="section">
+    <div class="container cols">
+      <div>
+        <h2 class="section-title" style="text-align:left">How We Work</h2>
+        <div class="timeline" style="margin-top:10px">
+          <div class="tl">
+            <span class="dot"></span>
+            <h4>1. Free Site Inspection</h4>
+            <p>We assess gate dimensions, power, terrain, and safety routes.</p>
+          </div>
+          <div class="tl">
+            <span class="dot"></span>
+            <h4>2. Clear Quotation</h4>
+            <p>Transparent pricing with hardware list and timeline.</p>
+          </div>
+          <div class="tl">
+            <span class="dot"></span>
+            <h4>3. Professional Installation</h4>
+            <p>Clean cuts, proper mounting, calibrated sensors and stops.</p>
+          </div>
+          <div class="tl">
+            <span class="dot"></span>
+            <h4>4. Handover & Support</h4>
+            <p>Training, warranty, and responsive after-sales support.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="cta">
+          <div>
+            <strong>Ready for a free inspection?</strong><br>
+            Tell us your location and the system you want installed.
+          </div>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <a class="btn primary" href="https://wa.me/233241588134?text=Hello%20Kofi%20N.%20Technologies%2C%0A%0ARequesting%20a%20free%20site%20inspection.%0ALocation%3A%20%0ASystem%3A%20(Automated%20Gate%2C%20Electric%20Fence%2C%20CCTV%2C%20etc.)%0A%0AThank%20you." target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+            <a class="btn" href="mailto:info@kofintechnologies.com?subject=Free%20Site%20Inspection%20Request">Email Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background:var(--soft)">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-sub">Quick answers about inspections, payments, and warranty.</p>
+      <div class="faq">
+        <div class="qa">
+          <h4><i class="fas fa-person-circle-check" style="color:var(--accent)"></i> Do you do site inspections before installation?</h4>
+          <p>Yes. We offer free site inspections in Accra and nearby areas to assess gate size, power access, terrain, and security requirements.</p>
+        </div>
+        <div class="qa">
+          <h4><i class="fas fa-money-bills" style="color:var(--accent)"></i> What payment options do you accept?</h4>
+          <p>We accept Mobile Money and bank transfers. For larger projects, milestone payments are available.</p>
+        </div>
+        <div class="qa">
+          <h4><i class="fas fa-shield-heart" style="color:var(--accent)"></i> What is your warranty?</h4>
+          <p>Installations include up to 2 years warranty, covering workmanship and manufacturer defects under normal use.</p>
+        </div>
+        <div class="qa">
+          <h4><i class="fas fa-truck-fast" style="color:var(--accent)"></i> How long does installation take?</h4>
+          <p>Typical single-gate automation completes within 1–2 days after materials are on-site; fences and multi-system jobs may take longer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container" style="padding:28px 0">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-title">Kofi N. Technologies</h3>
+          <p>Automated gates, electric fences, CCTV, shutters and access control — installed by certified technicians.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <ul class="footer-links">
+            <li>Adenta-Dodowa Road, Accra</li>
+            <li>+233 24 158 8134</li>
+            <li><a href="mailto:info@kofintechnologies.com">info@kofintechnologies.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Hours</h4>
+          <p>Mon – Sat: 8:00 AM – 8:00 PM</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="y"></span> Kofi N. Technologies. All rights reserved.</div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // NAV toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    navToggle?.addEventListener('click', () => {
+      const exp = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!exp));
+      navMenu.classList.toggle('active');
+    });
+
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

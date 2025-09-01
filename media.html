@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Base -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Media | Kofi N. Technologies — Installations & Demos</title>
+  <meta name="description" content="Watch our installation and demo videos of automated gates, electric fences, garage doors, CCTV, and access control across Ghana. See photos from recent projects." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2563eb" />
+
+  <!-- Canonical: EXACTLY this URL -->
+  <link rel="canonical" href="https://www.kofintechnologies.com/media.html" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Media — Kofi N. Technologies" />
+  <meta property="og:description" content="Our work in action: automated gates, electric fences, garage doors, and smart security systems." />
+  <meta property="og:url" content="https://www.kofintechnologies.com/media.html" />
+  <meta property="og:image" content="https://www.kofintechnologies.com/images/g7.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Media — Kofi N. Technologies" />
+  <meta name="twitter:description" content="See videos and photos from installations across Ghana." />
+  <meta name="twitter:image" content="https://www.kofintechnologies.com/images/g7.png" />
+
+  <!-- Icons (point to files that exist) -->
+  <link rel="icon" href="/images/glogo.png" />
+  <link rel="icon" type="image/png" href="/images/glogo.png" />
+  <link rel="apple-touch-icon" href="/images/glogo.png" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root{--ink:#0b1220;--muted:#6b7280;--ring:#e5e7eb;--accent:#2563eb;--blue:#1e3a8a;--cyan:#00FFD1}
+    *{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,sans-serif;background:#fff;color:var(--ink);line-height:1.6}
+    img{max-width:100%;display:block;height:auto}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+    /* NAV */
+    .navbar{position:sticky;top:0;z-index:50;background:#111;color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+    .brand{font-weight:900;color:var(--cyan)}
+    .nav-links{display:flex;gap:1.2rem;list-style:none;margin:0;padding:0}
+    .nav-links a{color:#fff;font-weight:700}
+    .nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--cyan);text-decoration:underline}
+    .nav-toggle{display:none;background:none;border:none;color:#fff;font-size:1.8rem}
+    @media (max-width:768px){
+      .nav-links{display:none;flex-direction:column;position:absolute;left:0;top:100%;width:100%;background:#111;padding:1rem;border-top:1px solid rgba(255,255,255,.08)}
+      .nav-links.active{display:flex}
+      .nav-toggle{display:block}
+    }
+
+    /* Header */
+    .page-hero{background:#eff6ff;border-bottom:1px solid var(--ring);padding:52px 0;text-align:center}
+    .page-hero h1{margin:0 0 .4rem;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--blue)}
+    .page-hero p{margin:0;color:#475569}
+    .breadcrumbs{font-size:.9rem;color:#64748b;padding:.75rem 0}
+    .breadcrumbs a{color:var(--accent)}
+    .breadcrumbs .sep{margin:0 .4rem;color:#94a3b8}
+
+    /* Sections */
+    .section{padding:40px 0}
+    .section-title{text-align:center;font-size:1.8rem;color:var(--blue);margin:0 0 .25rem}
+    .section-sub{color:#475569;text-align:center;margin:0 0 16px}
+
+    /* Filters */
+    .toolbar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:space-between;padding:10px 0 18px}
+    .chips{display:flex;gap:.4rem;flex-wrap:wrap}
+    .chip{border:1px solid var(--ring);background:#fff;border-radius:9999px;padding:.4rem .75rem;font-weight:800;cursor:pointer}
+    .chip.active,.chip:hover{border-color:var(--accent)}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    @media (max-width:1024px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+
+    /* Video cards */
+    .vcard{border:1px solid var(--ring);border-radius:14px;background:#fff;overflow:hidden;box-shadow:0 10px 24px rgba(2,6,23,.05);display:flex;flex-direction:column}
+    .vt{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer}
+    .vt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.9)}
+    .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(17,24,39,.85);color:#fff;border:none;border-radius:9999px;padding:.8rem 1rem;display:flex;gap:.5rem;align-items:center;font-weight:900}
+    .vb{padding:14px}
+    .vtitle{margin:0 0 .2rem;font-weight:900}
+    .vmeta{font-size:.9rem;color:var(--muted)}
+    .vactions{display:flex;gap:.5rem;margin-top:10px}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--ring);border-radius:.6rem;padding:.45rem .7rem;background:#fff;cursor:pointer;font-weight:800}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:70}
+    .modal.open{display:flex}
+    .modal-card{background:#fff;border-radius:14px;max-width:960px;width:100%;display:grid;grid-template-columns:1fr;overflow:hidden}
+    .modal-media{aspect-ratio:16/9;background:#000}
+    .modal-body{padding:14px}
+    .close{background:none;border:none;font-size:1.3rem;cursor:pointer}
+
+    /* Photos */
+    .pg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media (max-width:1024px){.pg{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.pg{grid-template-columns:1fr}}
+    .ph{border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(2,6,23,.08);cursor:pointer}
+    .ph img{width:100%;height:100%;object-fit:cover;transition:transform .25s}
+    .ph:hover img{transform:scale(1.03)}
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:80}
+    .lightbox.open{display:flex}
+    .lb-img{max-width:92vw;max-height:88vh;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+    .lb-ui{position:absolute;top:14px;left:14px;right:14px;display:flex;align-items:center;justify-content:space-between;color:#fff}
+    .lb-ctrl{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:#fff;padding:.7rem;border-radius:9999px;cursor:pointer}
+    .lb-prev{left:20px}
+    .lb-next{right:20px}
+
+    /* Footer */
+    .footer{background:#101820;color:#fff;margin-top:40px}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+    .footer-title{font-weight:900;color:var(--cyan)}
+    .footer-links{list-style:none;margin:0;padding:0}
+    .footer-links li{margin:.35rem 0}
+    .footer a:hover{color:var(--cyan)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.1);text-align:center;padding:14px;color:#94a3b8;font-size:.9rem}
+  </style>
+
+  <!-- JSON-LD: Breadcrumbs -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.kofintechnologies.com/"},
+    {"@type":"ListItem","position":2,"name":"Media","item":"https://www.kofintechnologies.com/media.html"}
+  ]}
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" role="navigation" aria-label="Primary">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Kofi N. Technologies</a>
+      <ul class="nav-links" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="media.html" aria-current="page">Media</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span class="sep">›</span> <span aria-current="page">Media</span>
+      </nav>
+      <h1>Our Media</h1>
+      <p>Get a closer look at our work and installations across Ghana.</p>
+    </div>
+  </header>
+
+  <!-- Videos -->
+  <section class="section" id="videos">
+    <div class="container">
+      <h2 class="section-title">Installation & Demo Videos</h2>
+      <p class="section-sub">Local videos (fast & private). Click to quick-view, open a watch page, or copy a share link.</p>
+
+      <div class="toolbar" role="group" aria-label="Filter videos">
+        <div class="chips">
+          <button class="chip active" data-cat="all">All</button>
+          <button class="chip" data-cat="Gate Automation">Gate Automation</button>
+          <button class="chip" data-cat="CCTV">CCTV</button>
+        </div>
+        <div>
+          <button class="chip" id="copyPage"><i class="fas fa-link"></i> Copy page link</button>
+        </div>
+      </div>
+
+      <div id="vgrid" class="grid" aria-live="polite"></div>
+      <div id="vempty" style="display:none;text-align:center;color:#6b7280;padding:20px">No videos found for this filter.</div>
+    </div>
+  </section>
+
+  <!-- Photos -->
+  <section class="section" id="photos">
+    <div class="container">
+      <h2 class="section-title">Photo Gallery</h2>
+      <p class="section-sub">Real installations, real results. Click any photo to view.</p>
+
+      <div class="pg" id="pg">
+        <a class="ph" data-index="0"><img src="images/g1.jpeg" alt="Modern automated gate in Accra" loading="lazy" width="1200" height="800"></a>
+        <a class="ph" data-index="1"><img src="images/g2.jpeg" alt="Electric fence wiring with backup" loading="lazy" width="1200" height="800"></a>
+        <a class="ph" data-index="2"><img src="images/g3.jpeg" alt="Roller shutter installation at a business" loading="lazy" width="1200" height="800"></a>
+        <a class="ph" data-index="3"><img src="images/g4.jpeg" alt="CCTV surveillance camera setup" loading="lazy" width="1200" height="800"></a>
+        <a class="ph" data-index="4"><img src="images/g5.jpeg" alt="Remote controlled garage door with sensors" loading="lazy" width="1200" height="800"></a>
+        <a class="ph" data-index="5"><img src="images/g6.jpeg" alt="Intercom security system at residence" loading="lazy" width="1200" height="800"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Modal -->
+  <div class="modal" id="vmodal" role="dialog" aria-modal="true" aria-labelledby="vmtitle">
+    <div class="modal-card">
+      <div class="modal-media" id="vmmedia"></div>
+      <div class="modal-body">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+          <h3 id="vmtitle" style="margin:0"></h3>
+          <button class="close" id="vmclose" aria-label="Close"><i class="fas fa-times"></i></button>
+        </div>
+        <p id="vmdesc" class="vmeta" style="margin:.4rem 0 0"></p>
+        <div class="vactions" style="margin-top:8px">
+          <a class="btn" id="vmwatch" target="_blank" rel="noopener"><i class="fas fa-play-circle"></i> Watch page</a>
+          <a class="btn primary" id="vmdownload" download><i class="fas fa-download"></i> Download</a>
+          <button class="btn" id="vmshare"><i class="fas fa-link"></i> Copy link</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lb" aria-hidden="true">
+    <button class="lb-ctrl lb-prev" id="lbPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <img class="lb-img" id="lbImg" src="" alt="">
+    <button class="lb-ctrl lb-next" id="lbNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    <div class="lb-ui">
+      <div id="lbCaption"></div>
+      <button class="btn" id="lbClose" style="background:rgba(255,255,255,.12);color:#fff;border-color:transparent"><i class="fas fa-times"></i> Close</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container" style="padding:28px 0">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-title">Kofi N. Technologies</h3>
+          <p>Gate automation, security, and peace of mind across Ghana.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <ul class="footer-links">
+            <li>Adenta-Dodowa Road, Accra</li>
+            <li>+233 24 158 8134</li>
+            <li><a href="mailto:info@kofintechnologies.com">info@kofintechnologies.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Hours</h4>
+          <p>Mon – Sat: 8:00 AM – 8:00 PM</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="y"></span> Kofi N. Technologies. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // NAV toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    navToggle?.addEventListener('click', () => {
+      const exp = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!exp));
+      navMenu.classList.toggle('active');
+    });
+
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Videos (use ad-block-safe, no-spaces names in /videos/)
+    const VIDEOS = [
+      { id:'automated-gate', title:'Automated Gate Demo', cat:'Gate Automation', src:'videos/gate-auto-demo.mp4', poster:'images/g1.jpeg', desc:'Smooth open/close with remotes and safety sensors.', uploaded:'2025-08-10', duration:'PT45S' },
+      { id:'cctv-vid',       title:'CCTV System Overview',   cat:'CCTV',           src:'videos/cctv-system-mobile.mp4', poster:'images/g4.jpeg', desc:'Camera coverage, NVR, and remote viewing.', uploaded:'2025-08-09', duration:'PT1M10S' },
+      { id:'electric-gate',  title:'Electric Gate Operation',cat:'Gate Automation', src:'videos/electric-gate-demo.mp4', poster:'images/g2.jpeg', desc:'Powerful gate motor kit for wide entrances.', uploaded:'2025-08-08', duration:'PT52S' },
+      { id:'gate1-vid',      title:'Gate Installation Timelapse', cat:'Gate Automation', src:'videos/gate-field-test.mp4', poster:'images/g3.jpeg', desc:'Installation highlights from site prep to handover.', uploaded:'2025-08-07', duration:'PT38S' }
+    ];
+
+    const vgrid = document.getElementById('vgrid');
+    const vempty = document.getElementById('vempty');
+    const chips = Array.from(document.querySelectorAll('.chip[data-cat]'));
+    let vstate = { cat:'all' };
+
+    function watchUrl(v){ return `watch-${v.id}.html`; }
+
+    function vCardHTML(v){
+      return `
+        <article class="vcard" id="v-${v.id}">
+          <div class="vt" role="button" aria-label="Play ${v.title}" data-open="${v.id}">
+            <img src="${v.poster}" alt="${v.title} poster" loading="lazy" width="480" height="270">
+            <button class="play"><i class="fas fa-play"></i> Play</button>
+          </div>
+          <div class="vb">
+            <h3 class="vtitle">${v.title}</h3>
+            <div class="vmeta">${v.cat}</div>
+            <div class="vactions">
+              <button class="btn" data-open="${v.id}"><i class="fas fa-eye"></i> Quick View</button>
+              <a class="btn" href="${watchUrl(v)}"><i class="fas fa-play-circle"></i> Watch page</a>
+              <a class="btn primary" href="${v.src}" download><i class="fas fa-download"></i> Download</a>
+              <button class="btn" data-copy="${v.id}"><i class="fas fa-link"></i> Copy Link</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderVideos(){
+      const items = VIDEOS.filter(v => vstate.cat==='all' || v.cat===vstate.cat);
+      vgrid.innerHTML = items.map(vCardHTML).join('');
+      vempty.style.display = items.length ? 'none' : 'block';
+      items.forEach(v=>{
+        document.querySelectorAll(`[data-open="${v.id}"]`).forEach(el=>el.addEventListener('click',()=>openModal(v.id,true)));
+        document.querySelector(`[data-copy="${v.id}"]`)?.addEventListener('click',()=>copyLink(watchUrl(v)));
+      });
+    }
+
+    chips.forEach(c => c.addEventListener('click', () => {
+      chips.forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      vstate.cat = c.dataset.cat;
+      renderVideos();
+    }));
+
+    // Modal
+    const vmodal = document.getElementById('vmodal');
+    const vmmedia = document.getElementById('vmmedia');
+    const vmtitle = document.getElementById('vmtitle');
+    const vmdesc = document.getElementById('vmdesc');
+    const vmclose = document.getElementById('vmclose');
+    const vmdownload = document.getElementById('vmdownload');
+    const vmwatch = document.getElementById('vmwatch');
+    const vmshare = document.getElementById('vmshare');
+
+    function openModal(id, autoplay){
+      const v = VIDEOS.find(x=>x.id===id);
+      if(!v) return;
+      vmtitle.textContent = v.title;
+      vmdesc.textContent = v.desc + ' • ' + v.cat;
+      vmdownload.href = v.src;
+      vmwatch.href = watchUrl(v);
+      const auto = autoplay ? ' autoplay' : '';
+      vmmedia.innerHTML = `
+        <video controls playsinline preload="none" poster="${v.poster}" style="width:100%;height:100%"${auto}>
+          <source src="${v.src}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>`;
+      vmodal.classList.add('open');
+      location.hash = 'v-'+v.id;
+      vmshare.onclick = () => copyLink(watchUrl(v));
+    }
+    function closeModal(){ vmodal.classList.remove('open'); vmmedia.innerHTML=''; }
+    vmclose.addEventListener('click', closeModal);
+    vmodal.addEventListener('click', e=>{ if(e.target===vmodal) closeModal(); });
+    window.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+
+    // Copy helpers
+    async function copyLink(path=''){
+      const url = path.startsWith('http') ? path : (location.origin + '/' + path.replace(/^\/?/,''));
+      try{ await navigator.clipboard.writeText(url); alert('Link copied!'); } catch{ alert('Copy failed'); }
+    }
+    document.getElementById('copyPage').addEventListener('click', ()=>copyLink(location.origin + location.pathname));
+
+    // Photos lightbox
+    const photos = [
+      {src:'images/g1.jpeg',alt:'Modern automated gate in Accra'},
+      {src:'images/g2.jpeg',alt:'Electric fence wiring with backup'},
+      {src:'images/g3.jpeg',alt:'Roller shutter installation at a business'},
+      {src:'images/g4.jpeg',alt:'CCTV surveillance camera setup'},
+      {src:'images/g5.jpeg',alt:'Remote controlled garage door with sensors'},
+      {src:'images/g6.jpeg',alt:'Intercom security system at residence'}
+    ];
+    const pg = document.getElementById('pg');
+    const lb = document.getElementById('lb');
+    const lbImg = document.getElementById('lbImg');
+    const lbCaption = document.getElementById('lbCaption');
+    const lbPrev = document.getElementById('lbPrev');
+    const lbNext = document.getElementById('lbNext');
+    const lbClose = document.getElementById('lbClose');
+    let idx = 0;
+
+    function openLB(i){
+      idx = i; const p = photos[idx];
+      lbImg.src = p.src; lbImg.alt = p.alt; lbCaption.textContent = p.alt;
+      lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+    }
+    function closeLB(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); }
+    function prev(){ idx = (idx - 1 + photos.length) % photos.length; openLB(idx); }
+    function next(){ idx = (idx + 1) % photos.length; openLB(idx); }
+
+    pg.querySelectorAll('.ph').forEach(el=>el.addEventListener('click', ()=>openLB(parseInt(el.dataset.index,10))));
+    lbPrev.addEventListener('click', prev);
+    lbNext.addEventListener('click', next);
+    lbClose.addEventListener('click', closeLB);
+    lb.addEventListener('click', e=>{ if(e.target===lb) closeLB(); });
+    window.addEventListener('keydown', e=>{
+      if(!lb.classList.contains('open')) return;
+      if(e.key==='Escape') closeLB();
+      if(e.key==='ArrowLeft') prev();
+      if(e.key==='ArrowRight') next();
+    });
+
+    // Initial render
+    renderVideos();
+
+    // VideoObject JSON-LD for each video (with uploadDate/duration & watch URL)
+    (function injectVideosLD(){
+      const graph = VIDEOS.map(v => ({
+        "@type": "VideoObject",
+        "name": v.title,
+        "description": v.desc,
+        "thumbnailUrl": location.origin + '/' + v.poster.replace(/^\/?/, ''),
+        "contentUrl":  location.origin + '/' + v.src.replace(/^\/?/, ''),
+        "uploadDate":  (v.uploaded ? new Date(v.uploaded).toISOString() : new Date().toISOString()),
+        ...(v.duration ? { "duration": v.duration } : {}),
+        "url": location.origin + '/' + watchUrl(v),
+        "publisher": { "@type":"Organization", "name":"Kofi N. Technologies" },
+        "potentialAction": { "@type":"WatchAction", "target": { "@type":"EntryPoint", "urlTemplate": location.origin + '/' + watchUrl(v) } }
+      }));
+      const ld = { "@context":"https://schema.org", "@graph": graph };
+      const s = document.createElement('script'); s.type='application/ld+json'; s.textContent = JSON.stringify(ld); document.head.appendChild(s);
+    })();
+  </script>
+</body>
+</html>

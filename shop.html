@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Base meta -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Shop | Kofi N. Technologies — Automated Gates, Electric Fences, CCTV</title>
+  <meta name="description" content="Shop automated gates, electric fences, roller shutters, CCTV kits, and access control systems in Ghana. Installation by certified technicians." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2563eb" />
+
+  <!-- Canonical (pick ONE preferred host; this matches the rest of the site) -->
+  <link rel="canonical" href="https://www.kofintechnologies.com/shop.html" />
+
+  <!-- Open Graph / Social (use an image that exists; swap to og-cover.webp later if you add it) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Shop | Kofi N. Technologies" />
+  <meta property="og:description" content="Explore secure, durable, and smart automation solutions for homes and businesses in Ghana." />
+  <meta property="og:url" content="https://www.kofintechnologies.com/shop.html" />
+  <meta property="og:image" content="https://www.kofintechnologies.com/images/g7.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shop | Kofi N. Technologies" />
+  <meta name="twitter:description" content="Explore premium security and automation solutions." />
+  <meta name="twitter:image" content="https://www.kofintechnologies.com/images/g7.png" />
+
+  <!-- Icons (place these files in your site ROOT) -->
+  <link rel="icon" type="image/png" href="/images/glogo.png" />
+  <link rel="icon" href="/images/glogo.png" />
+  <link rel="apple-touch-icon" href="/images/glogo.png" />
+
+  <!-- Icons (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Styles -->
+  <style>
+    :root{
+      --ink:#0b1220;--muted:#6b7280;--brand:#111827;--accent:#2563eb;--ring:#e5e7eb;--bg:#ffffff;--soft:#f5f7fa;--cyan:#00FFD1;
+    }
+    *{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;height:auto;display:block}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+    /* NAV */
+    .navbar{position:sticky;top:0;z-index:50;background:#111;color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+    .brand{font-weight:800;color:var(--cyan)}
+    .nav-links{display:flex;gap:1.2rem;list-style:none;margin:0;padding:0}
+    .nav-links a{color:#fff;font-weight:600}
+    .nav-links a:hover{color:var(--cyan)}
+    .nav-toggle{display:none;background:none;border:none;color:#fff;font-size:1.8rem}
+    @media (max-width:768px){
+      .nav-links{display:none;flex-direction:column;position:absolute;left:0;top:100%;width:100%;background:#111;padding:1rem;border-top:1px solid rgba(255,255,255,.08)}
+      .nav-links.active{display:flex}
+      .nav-toggle{display:block}
+    }
+
+    /* Page header */
+    .page-hero{background:#eff6ff;padding:52px 0;text-align:center;border-bottom:1px solid var(--ring)}
+    .page-hero h1{margin:0 0 .4rem;font-size:clamp(1.6rem,3vw,2.4rem);color:#1e3a8a}
+    .page-hero p{margin:0;color:#475569}
+
+    /* Breadcrumbs */
+    .breadcrumbs{font-size:.9rem;color:#64748b;padding:.75rem 0}
+    .breadcrumbs a{color:var(--accent)}
+    .breadcrumbs .sep{margin:0 .4rem;color:#94a3b8}
+
+    /* Toolbar */
+    .toolbar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:space-between;padding:16px 0}
+    .search{display:flex;align-items:center;gap:.4rem;border:1px solid var(--ring);border-radius:.7rem;padding:.4rem .6rem;background:#fff}
+    .search input{border:none;outline:none;font:inherit;min-width:220px}
+    .filters{display:flex;gap:.4rem;flex-wrap:wrap}
+    .chip{border:1px solid var(--ring);background:#fff;border-radius:9999px;padding:.4rem .75rem;font-weight:700;cursor:pointer}
+    .chip.active,.chip:hover{border-color:var(--accent);color:#0b1320}
+    .sort{border:1px solid var(--ring);border-radius:.6rem;padding:.45rem .6rem;background:#fff}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    @media (max-width:1024px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+
+    /* Card */
+    .card{border:1px solid var(--ring);border-radius:14px;background:#fff;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 10px 24px rgba(2,6,23,.05)}
+    .thumb{position:relative;aspect-ratio:16/10;background:#f3f4f6}
+    .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .badge{position:absolute;left:10px;top:10px;background:rgba(17,24,39,.9);color:#fff;padding:.25rem .55rem;border-radius:9999px;font-size:.75rem;font-weight:800}
+    .body{padding:14px}
+    .title{margin:0 0 .2rem;font-size:1.05rem;font-weight:800}
+    .desc{margin:.2rem 0 .6rem;color:#6b7280;font-size:.95rem}
+    .meta{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .price{font-weight:900;color:#111827}
+    .btns{display:flex;gap:.5rem;margin-top:10px}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--ring);border-radius:.6rem;padding:.5rem .7rem;background:#fff;cursor:pointer;font-weight:800}
+    .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+    .btn:hover{transform:translateY(-1px)}
+    .kicker{color:#16a34a;font-weight:800;font-size:.85rem}
+
+    /* Drawer (Quote list) */
+    .quote-fab{position:fixed;right:16px;bottom:16px;background:var(--accent);color:#fff;border:none;border-radius:9999px;padding:.9rem 1rem;display:flex;align-items:center;gap:.5rem;box-shadow:0 12px 30px rgba(37,99,235,.35);cursor:pointer;z-index:40}
+    .quote-fab .count{background:#fff;color:var(--accent);font-weight:900;border-radius:9999px;padding:.15rem .45rem}
+    .drawer{position:fixed;right:0;top:0;height:100%;width:min(420px,92%);background:#fff;border-left:1px solid var(--ring);box-shadow:-10px 0 30px rgba(2,6,23,.1);transform:translateX(110%);transition:transform .25s ease;z-index:60}
+    .drawer.open{transform:none}
+    .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid var(--ring)}
+    .drawer-body{padding:14px;height:calc(100% - 120px);overflow:auto}
+    .drawer-foot{padding:14px;border-top:1px solid var(--ring)}
+    .line{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--ring);border-radius:.6rem;padding:10px;margin-bottom:8px}
+
+    /* Modal (quick view) */
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:70}
+    .modal.open{display:flex}
+    .modal-card{background:#fff;border-radius:14px;max-width:860px;width:100%;display:grid;grid-template-columns:1.2fr .8fr;overflow:hidden}
+    @media (max-width:800px){.modal-card{grid-template-columns:1fr}}
+    .modal-img{background:#f3f4f6}
+    .modal-img img{width:100%;height:100%;object-fit:cover}
+    .modal-body{padding:16px}
+    .close{background:none;border:none;font-size:1.3rem;cursor:pointer}
+
+    /* Hide all price displays (cards, modal) */
+    .price{display:none !important;}
+
+    /* Footer */
+    .footer{background:#101820;color:#fff;margin-top:40px}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+    .footer-title{font-weight:900;color:var(--cyan)}
+    .footer-links{list-style:none;margin:0;padding:0}
+    .footer-links li{margin:.35rem 0}
+    .footer a:hover{color:var(--cyan)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.1);text-align:center;padding:14px;color:#94a3b8;font-size:.9rem}
+  </style>
+
+  <!-- Breadcrumb JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://www.kofintechnologies.com/"},
+      {"@type":"ListItem","position":2,"name":"Shop","item":"https://www.kofintechnologies.com/shop.html"}
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" role="navigation" aria-label="Primary">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Kofi N. Technologies</a>
+      <ul class="nav-links" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html" aria-current="page">Shop</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span class="sep">›</span> <span aria-current="page">Shop</span>
+      </nav>
+      <h1>Our Products</h1>
+      <p>Secure, durable, and smart solutions built for Ghanaian homes & businesses.</p>
+    </div>
+  </header>
+
+  <!-- Toolbar -->
+  <section class="container">
+    <div class="toolbar">
+      <div class="search" role="search">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input id="q" type="search" placeholder="Search products (e.g., gate, fence, CCTV)" aria-label="Search products" />
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter by category">
+        <button class="chip active" data-cat="all">All</button>
+        <button class="chip" data-cat="Gate Automation">Gate Automation</button>
+        <button class="chip" data-cat="Electric Fence">Electric Fence</button>
+        <button class="chip" data-cat="Roller Shutters">Roller Shutters</button>
+        <button class="chip" data-cat="CCTV">CCTV</button>
+        <button class="chip" data-cat="Access Control">Access Control</button>
+      </div>
+
+      <label class="sort" for="sort">
+        <select id="sort" aria-label="Sort products">
+          <option value="pop">Sort: Popular</option>
+          <option value="lh">Price: Low → High</option>
+          <option value="hl">Price: High → Low</option>
+          <option value="az">Name: A → Z</option>
+          <option value="za">Name: Z → A</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <!-- Grid -->
+  <section class="container" aria-labelledby="grid-title">
+    <h2 id="grid-title" class="visually-hidden">Products grid</h2>
+    <div id="grid" class="grid"></div>
+    <div id="empty" style="display:none;text-align:center;color:#6b7280;padding:26px">No products match your search.</div>
+  </section>
+
+  <!-- Quote FAB -->
+  <button class="quote-fab" id="quoteFab" aria-haspopup="dialog" aria-controls="quoteDrawer">
+    <i class="fas fa-clipboard-list"></i> Quote List <span class="count" id="quoteCount">0</span>
+  </button>
+
+  <!-- Drawer -->
+  <aside class="drawer" id="quoteDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+    <div class="drawer-head">
+      <h3 id="drawerTitle" style="margin:0">Your Quote List</h3>
+      <button class="close" id="closeDrawer" aria-label="Close"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="drawer-body" id="quoteList"></div>
+    <div class="drawer-foot">
+      <button class="btn primary" id="sendQuote"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+      <button class="btn" id="clearQuote"><i class="fas fa-trash"></i> Clear</button>
+    </div>
+  </aside>
+
+  <!-- Quick View Modal -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-img">
+        <img id="modalImg" src="" alt="" width="800" height="500" />
+      </div>
+      <div class="modal-body">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <h3 id="modalTitle" style="margin:0"></h3>
+          <button class="close" id="closeModal" aria-label="Close"><i class="fas fa-times"></i></button>
+        </div>
+        <p id="modalDesc" class="desc" style="margin-top:6px"></p>
+        <div class="meta" style="margin-bottom:8px">
+          <div class="price" id="modalPrice"></div>
+          <div class="kicker" id="modalBadge"></div>
+        </div>
+        <div class="btns">
+          <button class="btn primary" id="modalAdd"><i class="fas fa-plus"></i> Add to Quote</button>
+          <a class="btn" id="modalWa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container" style="padding:28px 0">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-title">Kofi N. Technologies</h3>
+          <p>Automated gates, electric fences, CCTV, shutters and access control — installed by certified technicians.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <ul class="footer-links">
+            <li>Adenta-Dodowa Rd, Accra</li>
+            <li>+233 24 158 8134</li>
+            <li><a href="mailto:info@kofintechnologies.com">info@kofintechnologies.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Hours</h4>
+          <p>Mon – Sat: 8:00 AM – 8:00 PM</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="y"></span> Kofi N. Technologies. All rights reserved.</div>
+  </footer>
+
+  <!-- Utilities -->
+  <style>.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}</style>
+
+  <!-- Products data + page logic -->
+  <script>
+    // ====== NAV toggle ======
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    navToggle?.addEventListener('click', () => {
+      const exp = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!exp));
+      navMenu.classList.toggle('active');
+    });
+
+    // ====== Products (unchanged; prices kept internally but not shown) ======
+    const PRODUCTS = [
+      { id:'gate-sliding', name:'Sliding Gate Motor (Kit)', cat:'Gate Automation', price:3800, unit:'GHS', img:'images/automated-gate.jpeg', w:1200,h:800,
+        desc:'Robust sliding gate motor with remotes, safety photo-sensors and manual release.', popular:true },
+      { id:'gate-swing', name:'Swing Gate Motor (Kit)', cat:'Gate Automation', price:3600, unit:'GHS', img:'images/automated-gate.jpeg', w:1200,h:800,
+        desc:'Dual/single swing motor kit, durable arms, remote controls and safety hardware.' },
+      { id:'fence-standard', name:'Electric Fence Package (20m)', cat:'Electric Fence', price:2500, unit:'GHS', img:'images/electric-fence.jpg', w:1200,h:800,
+        desc:'Energizer, posts, wires, warning signs and alarm integration for standard plots.', popular:true },
+      { id:'fence-pro', name:'Electric Fence Package (40m)', cat:'Electric Fence', price:4200, unit:'GHS', img:'images/electric-fence.jpg', w:1200,h:800,
+        desc:'Extended perimeter protection with battery backup and tamper detection.' },
+      { id:'shutter-auto', name:'Roller Shutter — Automated', cat:'Roller Shutters', price:5200, unit:'GHS', img:'images/shutter.jpeg', w:1200,h:800,
+        desc:'Heavy-duty shutter with smooth motorized operation and reinforced locking.' },
+      { id:'cctv-4k', name:'CCTV Kit — 4 Cameras (1080p)', cat:'CCTV', price:2800, unit:'GHS', img:'images/cctv.jpeg', w:1200,h:800,
+        desc:'4x cameras, NVR, cables and remote viewing setup via mobile app.', popular:true },
+      { id:'access-keypad', name:'Access Control — Keypad & RFID', cat:'Access Control', price:1450, unit:'GHS', img:'images/g5.jpeg', w:1200,h:800,
+        desc:'Standalone keypad with RFID, door strike integration and audit options.' },
+      { id:'intercom', name:'Audio/Video Intercom Kit', cat:'Access Control', price:2100, unit:'GHS', img:'images/g2.jpeg', w:1200,h:800,
+        desc:'Indoor monitor + outdoor station; crisp video, door release integration.' },
+      { id:'garage-door', name:'Garage Door — Sectional', cat:'Gate Automation', price:6900, unit:'GHS', img:'images/g7.png', w:1200,h:800,
+        desc:'Insulated sectional door with quiet opener and safety reversal.' },
+      { id:'cctv-8k', name:'CCTV Kit — 8 Cameras (1080p)', cat:'CCTV', price:5200, unit:'GHS', img:'images/g3.jpeg', w:1200,h:800,
+        desc:'8x cameras with NVR and remote viewing; ideal for larger properties.' },
+      { id:'roller-manual', name:'Roller Shutter — Manual', cat:'Roller Shutters', price:3200, unit:'GHS', img:'images/shutter.jpeg', w:1200,h:800,
+        desc:'Reliable manual shutter with balanced mechanism for shops and garages.' },
+      { id:'rf-remote', name:'RF Remotes (Pair) & Receiver', cat:'Access Control', price:600, unit:'GHS', img:'images/g1.jpeg', w:1200,h:800,
+        desc:'Pair of RF remotes with receiver module — add to new or existing gate motors.' }
+    ];
+
+    // ====== Render logic ======
+    const grid = document.getElementById('grid');
+    const empty = document.getElementById('empty');
+    const q = document.getElementById('q');
+    const chips = Array.from(document.querySelectorAll('.chip'));
+    const sortSel = document.getElementById('sort');
+
+    let state = { q:'', cat:'all', sort:'pop' };
+
+    function fmtPrice(p, u){ return new Intl.NumberFormat('en-GH').format(p) + ' ' + (u || 'GHS'); }
+
+    function filtered(){
+      let arr = PRODUCTS.slice();
+      if (state.cat !== 'all') arr = arr.filter(p => p.cat === state.cat);
+      if (state.q) {
+        const t = state.q.toLowerCase();
+        arr = arr.filter(p => (p.name + ' ' + p.desc + ' ' + p.cat).toLowerCase().includes(t));
+      }
+      switch(state.sort){
+        case 'lh': arr.sort((a,b)=>a.price-b.price); break;
+        case 'hl': arr.sort((a,b)=>b.price-a.price); break;
+        case 'az': arr.sort((a,b)=>a.name.localeCompare(b.name)); break;
+        case 'za': arr.sort((a,b)=>b.name.localeCompare(a.name)); break;
+        default:   arr.sort((a,b)=>(b.popular?1:0)-(a.popular?1:0));
+      }
+      return arr;
+    }
+
+    function render(){
+      const items = filtered();
+      grid.innerHTML = items.map(p => cardHTML(p)).join('');
+      empty.style.display = items.length ? 'none' : 'block';
+      // bind buttons
+      items.forEach(p=>{
+        document.getElementById('add-'+p.id)?.addEventListener('click',()=>addToQuote(p.id));
+        document.getElementById('view-'+p.id)?.addEventListener('click',()=>openModal(p.id));
+        document.getElementById('wa-'+p.id)?.addEventListener('click',()=>waQuick(p));
+      });
+    }
+
+    function cardHTML(p){
+      return `
+        <article class="card" id="${p.id}">
+          <div class="thumb">
+            <img src="${p.img}" alt="${p.name}" loading="lazy" width="${p.w}" height="${p.h}">
+            ${p.popular ? '<span class="badge">Popular</span>' : ''}
+          </div>
+          <div class="body">
+            <h3 class="title">${p.name}</h3>
+            <p class="desc">${p.desc}</p>
+            <div class="meta">
+              <div class="price">${fmtPrice(p.price, p.unit)}</div>
+              <div class="kicker">${p.cat}</div>
+            </div>
+            <div class="btns">
+              <button class="btn primary" id="add-${p.id}"><i class="fas fa-plus"></i> Add to Quote</button>
+              <button class="btn" id="view-${p.id}"><i class="fas fa-eye"></i> View</button>
+              <button class="btn" id="wa-${p.id}"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // Events
+    q.addEventListener('input', e => { state.q = e.target.value.trim(); render(); });
+    chips.forEach(c => c.addEventListener('click', () => {
+      chips.forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      state.cat = c.dataset.cat;
+      render();
+    }));
+    sortSel.addEventListener('change', e => { state.sort = e.target.value; render(); });
+
+    // ====== Quote drawer ======
+    const fab = document.getElementById('quoteFab');
+    const drawer = document.getElementById('quoteDrawer');
+    const closeDrawerBtn = document.getElementById('closeDrawer');
+    const quoteList = document.getElementById('quoteList');
+    const quoteCount = document.getElementById('quoteCount');
+    const sendQuote = document.getElementById('sendQuote');
+    const clearQuote = document.getElementById('clearQuote');
+
+    const quote = new Map(); // id -> qty
+
+    function addToQuote(id){
+      quote.set(id, (quote.get(id) || 0) + 1);
+      updateQuoteUI();
+    }
+    function removeFromQuote(id){
+      quote.delete(id);
+      updateQuoteUI();
+    }
+    function updateQuoteUI(){
+      const total = Array.from(quote.values()).reduce((a,b)=>a+b,0);
+      quoteCount.textContent = total;
+      quoteList.innerHTML = Array.from(quote.entries()).map(([id,qty])=>{
+        const p = PRODUCTS.find(x=>x.id===id);
+        return `
+          <div class="line">
+            <div style="display:flex;gap:10px;align-items:center">
+              <img src="${p.img}" alt="${p.name}" width="64" height="44" style="border-radius:.4rem;object-fit:cover">
+              <div>
+                <div style="font-weight:800">${p.name}</div>
+                <div style="color:#6b7280;font-size:.9rem">${p.cat}</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <div title="Quantity">x ${qty}</div>
+              <button class="btn" aria-label="Remove" onclick="(${removeFromQuote.toString()})('${id}')"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+        `;
+      }).join('') || '<p style="color:#6b7280">No items yet. Add products to request a quote.</p>';
+    }
+
+    fab.addEventListener('click', ()=>drawer.classList.add('open'));
+    closeDrawerBtn.addEventListener('click', ()=>drawer.classList.remove('open'));
+
+    // WhatsApp quote (no prices)
+    sendQuote.addEventListener('click', ()=>{
+      if(!quote.size){ alert('Add at least one product.'); return; }
+      const lines = Array.from(quote.entries()).map(([id,qty],i)=>{
+        const p = PRODUCTS.find(x=>x.id===id);
+        return `${i+1}. ${p.name} — x${qty}`;
+      }).join('%0A');
+      const text = `Hello Kofi N. Technologies,%0A%0AI would like a quote for:%0A${lines}%0A%0ASent from: https://www.kofintechnologies.com/shop.html`;
+      window.open(`https://wa.me/233241588134?text=${text}`,'_blank','noopener');
+    });
+    clearQuote.addEventListener('click', ()=>{quote.clear(); updateQuoteUI();});
+
+    // Quick WhatsApp per product (no price)
+    function waQuick(p){
+      const text = `Hello Kofi N. Technologies,%0A%0AI’m interested in: ${p.name}%0ACategory: ${p.cat}%0A%0ASent from: https://www.kofintechnologies.com/shop.html#${p.id}`;
+      window.open(`https://wa.me/233241588134?text=${text}`,'_blank','noopener');
+    }
+
+    // ====== Modal (quick view) ======
+    const modal = document.getElementById('modal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalBadge = document.getElementById('modalBadge');
+    const modalAdd = document.getElementById('modalAdd');
+    const modalWa = document.getElementById('modalWa');
+    let current = null;
+
+    function openModal(id){
+      const p = PRODUCTS.find(x=>x.id===id);
+      current = p;
+      modalImg.src = p.img; modalImg.alt = p.name;
+      modalTitle.textContent = p.name;
+      modalDesc.textContent = p.desc;
+      modalPrice.textContent = ''; // price removed
+      modalBadge.textContent = p.cat;
+      modalWa.href = `https://wa.me/233241588134?text=Hello%20Kofi%20N.%20Technologies,%0A%0AI’m%20interested%20in:%20${encodeURIComponent(p.name)}%0AFrom%20Shop:%20https://www.kofintechnologies.com/shop.html#${p.id}`;
+      modal.classList.add('open');
+    }
+    modalAdd.addEventListener('click', ()=>{ if(current){ addToQuote(current.id); } });
+    closeModalBtn.addEventListener('click', ()=>modal.classList.remove('open'));
+    modal.addEventListener('click', e=>{ if(e.target===modal) modal.classList.remove('open'); });
+
+    // ====== Initial render ======
+    render();
+    updateQuoteUI();
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // ====== JSON-LD: ItemList + Product (no price in offers) ======
+    (function injectLD(){
+      const base = 'https://www.kofintechnologies.com/shop.html#';
+      const itemList = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": PRODUCTS.slice(0,12).map((p,i)=>({
+          "@type":"ListItem","position": i+1, "url": base + p.id, "name": p.name
+        }))}
+      ;
+      const products = {
+        "@context":"https://schema.org",
+        "@graph": PRODUCTS.slice(0,8).map(p=>({
+          "@type":"Product",
+          "@id": base + p.id,
+          "name": p.name,
+          "description": p.desc,
+          "category": p.cat,
+          "image": "https://www.kofintechnologies.com/" + p.img.replace(/^\/?/,''),
+          "brand": {"@type":"Brand","name":"Kofi N. Technologies"},
+          "offers": {
+            "@type":"Offer",
+            "priceCurrency": p.unit || "GHS",
+            "availability": "https://schema.org/InStock",
+            "url": base + p.id
+          }
+        }))}
+      ;
+      const s1 = document.createElement('script'); s1.type='application/ld+json'; s1.textContent = JSON.stringify(itemList); document.head.appendChild(s1);
+      const s2 = document.createElement('script'); s2.type='application/ld+json'; s2.textContent = JSON.stringify(products); document.head.appendChild(s2);
+    })();
+  </script>
+</body>
+</html>

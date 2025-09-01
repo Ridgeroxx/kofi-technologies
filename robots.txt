@@ -1,0 +1,8 @@
+# robots.txt for https://www.kofintechnologies.com
+User-agent: *
+Allow: /
+
+# Don't block anything you want indexed.
+
+# Sitemaps
+Sitemap: https://www.kofintechnologies.com/sitemap.xml
