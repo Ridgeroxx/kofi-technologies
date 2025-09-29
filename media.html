@@ -417,21 +417,34 @@
 
     // VideoObject JSON-LD for each video (with uploadDate/duration & watch URL)
     (function injectVideosLD(){
-      const graph = VIDEOS.map(v => ({
-        "@type": "VideoObject",
-        "name": v.title,
-        "description": v.desc,
-        "thumbnailUrl": location.origin + '/' + v.poster.replace(/^\/?/, ''),
-        "contentUrl":  location.origin + '/' + v.src.replace(/^\/?/, ''),
-        "uploadDate":  (v.uploaded ? new Date(v.uploaded).toISOString() : new Date().toISOString()),
-        ...(v.duration ? { "duration": v.duration } : {}),
-        "url": location.origin + '/' + watchUrl(v),
-        "publisher": { "@type":"Organization", "name":"Kofi N. Technologies" },
-        "potentialAction": { "@type":"WatchAction", "target": { "@type":"EntryPoint", "urlTemplate": location.origin + '/' + watchUrl(v) } }
-      }));
-      const ld = { "@context":"https://schema.org", "@graph": graph };
-      const s = document.createElement('script'); s.type='application/ld+json'; s.textContent = JSON.stringify(ld); document.head.appendChild(s);
-    })();
+    const graph = VIDEOS.map(v => ({
+      "@type": "VideoObject",
+      "name": v.title,
+      "description": v.desc,
+      "thumbnailUrl": location.origin + '/' + v.poster.replace(/^\/?/, ''),
+      "contentUrl":  location.origin + '/' + v.src.replace(/^\/?/, ''),
+      "uploadDate":  (v.uploaded ? new Date(v.uploaded).toISOString() : new Date().toISOString()),
+      ...(v.duration ? { "duration": v.duration } : {}),
+      "url": location.origin + '/' + (('watch-' + v.id + '.html')),
+      "publisher": { "@type":"Organization", "name":"Kofi N. Technologies" },
+      "potentialAction": {
+        "@type":"WatchAction",
+        "target": { "@type":"EntryPoint", "urlTemplate": location.origin + '/' + ('watch-' + v.id + '.html') }
+      },
+      "hasPart": {
+        "@type": "Clip",
+        "name": v.title + " Clip",
+        "startOffset": 0
+      },
+      "potentialAction": {
+        "@type": "SeekToAction",
+        "target": location.origin + '/' + ('watch-' + v.id + '.html') + "?t={seek_to_second_number}",
+        "startOffset-input": "required name=seek_to_second_number"
+      }
+    }));
+    const ld = { "@context":"https://schema.org", "@graph": graph };
+    const s = document.createElement('script'); s.type='application/ld+json'; s.textContent = JSON.stringify(ld); document.head.appendChild(s);
+  })();
   </script>
 </body>
 </html>
