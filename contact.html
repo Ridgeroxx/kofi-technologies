@@ -24,7 +24,7 @@
   <meta name="twitter:description" content="Get a fast quote or book a free site inspection." />
   <meta name="twitter:image" content="https://www.kofintechnologies.com/images/g7.png" />
 
-  <!-- Icons (place files in site ROOT) -->
+  <!-- Icons -->
   <link rel="icon" href="/images/glogo.png" />
   <link rel="icon" type="image/png" href="/images/glogo.png" />
   <link rel="apple-touch-icon" href="/images/glogo.png" />
@@ -86,7 +86,6 @@
     .btn.gray{background:#111827;border-color:#111827;color:#fff}
     .btn:hover{transform:translateY(-1px)}
     .actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:10px}
-    .ok{color:var(--ok)} .warn{color:var(--warn)}
     .msg{border-radius:.6rem;padding:.6rem .8rem;margin-bottom:.6rem}
     .msg.ok{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
     .msg.err{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
@@ -121,11 +120,12 @@
   ]}
   </script>
 
-  <!-- JSON-LD: LocalBusiness (contact + geo) -->
+  <!-- JSON-LD: LocalBusiness with @id -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"LocalBusiness",
+    "@id":"https://www.kofintechnologies.com/#org",
     "name":"Kofi N. Technologies",
     "url":"https://www.kofintechnologies.com/",
     "logo":"https://www.kofintechnologies.com/images/glogo.png",
@@ -140,15 +140,36 @@
       "addressCountry":"GH"
     },
     "geo":{"@type":"GeoCoordinates","latitude":5.6741,"longitude":-0.1572},
-    "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"20:00"}],
+    "openingHoursSpecification":[
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"20:00"}
+    ],
     "areaServed":"GH",
     "priceRange":"$$"
   }
   </script>
 
-  <!-- JSON-LD: ContactPage -->
+  <!-- JSON-LD: ContactPage linked to LocalBusiness via mainEntity -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"ContactPage","about":{"@id":"https://www.kofintechnologies.com/#org"}}
+  {
+    "@context":"https://schema.org",
+    "@type":"ContactPage",
+    "mainEntity":{"@id":"https://www.kofintechnologies.com/#org"}
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite with SearchAction (optional boost) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "url":"https://www.kofintechnologies.com/",
+    "name":"Kofi N. Technologies",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://www.kofintechnologies.com/shop.html?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
   </script>
 </head>
 <body>
@@ -429,7 +450,7 @@
     });
 
     // ===== Form handling (Formspree) =====
-    // Replace with your actual Formspree endpoint:
+    // TODO: Replace with your actual Formspree endpoint:
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/your-form-id';
     const form = document.getElementById('contactForm');
     const msg = document.getElementById('formMsg');
@@ -460,7 +481,6 @@
 
       // build form data
       const data = new FormData(form);
-      // add a subject for Formspree dashboards
       data.append('_subject', 'Website enquiry — ' + (document.getElementById('service').value || 'General'));
 
       try{
