@@ -10,10 +10,10 @@
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#2563eb" />
 
-  <!-- Canonical (pick ONE preferred host; this matches the rest of the site) -->
+  <!-- Canonical (ONE preferred host; matches site) -->
   <link rel="canonical" href="https://www.kofintechnologies.com/shop.html" />
 
-  <!-- Open Graph / Social (use an image that exists; swap to og-cover.webp later if you add it) -->
+  <!-- Open Graph / Social -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Shop | Kofi N. Technologies" />
   <meta property="og:description" content="Explore secure, durable, and smart automation solutions for homes and businesses in Ghana." />
@@ -27,9 +27,8 @@
   <meta name="twitter:description" content="Explore premium security and automation solutions." />
   <meta name="twitter:image" content="https://www.kofintechnologies.com/images/g7.png" />
 
-  <!-- Icons (place these files in your site ROOT) -->
+  <!-- Icons -->
   <link rel="icon" type="image/png" href="/images/glogo.png" />
-  <link rel="icon" href="/images/glogo.png" />
   <link rel="apple-touch-icon" href="/images/glogo.png" />
 
   <!-- Icons (Font Awesome) -->
@@ -101,6 +100,9 @@
     .btn:hover{transform:translateY(-1px)}
     .kicker{color:#16a34a;font-weight:800;font-size:.85rem}
 
+    /* Hide all price displays (cards, modal) — UI stays price-free */
+    .price{display:none !important;}
+
     /* Drawer (Quote list) */
     .quote-fab{position:fixed;right:16px;bottom:16px;background:var(--accent);color:#fff;border:none;border-radius:9999px;padding:.9rem 1rem;display:flex;align-items:center;gap:.5rem;box-shadow:0 12px 30px rgba(37,99,235,.35);cursor:pointer;z-index:40}
     .quote-fab .count{background:#fff;color:var(--accent);font-weight:900;border-radius:9999px;padding:.15rem .45rem}
@@ -121,9 +123,6 @@
     .modal-body{padding:16px}
     .close{background:none;border:none;font-size:1.3rem;cursor:pointer}
 
-    /* Hide all price displays (cards, modal) */
-    .price{display:none !important;}
-
     /* Footer */
     .footer{background:#101820;color:#fff;margin-top:40px}
     .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
@@ -136,15 +135,29 @@
 
   <!-- Breadcrumb JSON-LD -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type":"ListItem","position":1,"name":"Home","item":"https://www.kofintechnologies.com/"},
-      {"@type":"ListItem","position":2,"name":"Shop","item":"https://www.kofintechnologies.com/shop.html"}
-    ]
-  }
-  </script>
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://www.kofintechnologies.com/"},
+        {"@type":"ListItem","position":2,"name":"Shop","item":"https://www.kofintechnologies.com/shop.html"}
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://www.kofintechnologies.com/",
+      "name": "Kofi N. Technologies",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.kofintechnologies.com/shop.html?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -300,7 +313,7 @@
       navMenu.classList.toggle('active');
     });
 
-    // ====== Products (unchanged; prices kept internally but not shown) ======
+    // ====== Products (prices kept internally; UI hides them with CSS) ======
     const PRODUCTS = [
       { id:'gate-sliding', name:'Sliding Gate Motor (Kit)', cat:'Gate Automation', price:3800, unit:'GHS', img:'images/automated-gate.jpeg', w:1200,h:800,
         desc:'Robust sliding gate motor with remotes, safety photo-sensors and manual release.', popular:true },
@@ -360,7 +373,6 @@
       const items = filtered();
       grid.innerHTML = items.map(p => cardHTML(p)).join('');
       empty.style.display = items.length ? 'none' : 'block';
-      // bind buttons
       items.forEach(p=>{
         document.getElementById('add-'+p.id)?.addEventListener('click',()=>addToQuote(p.id));
         document.getElementById('view-'+p.id)?.addEventListener('click',()=>openModal(p.id));
@@ -447,7 +459,7 @@
     fab.addEventListener('click', ()=>drawer.classList.add('open'));
     closeDrawerBtn.addEventListener('click', ()=>drawer.classList.remove('open'));
 
-    // WhatsApp quote (no prices)
+    // WhatsApp quote (no prices shown to user)
     sendQuote.addEventListener('click', ()=>{
       if(!quote.size){ alert('Add at least one product.'); return; }
       const lines = Array.from(quote.entries()).map(([id,qty],i)=>{
@@ -483,7 +495,7 @@
       modalImg.src = p.img; modalImg.alt = p.name;
       modalTitle.textContent = p.name;
       modalDesc.textContent = p.desc;
-      modalPrice.textContent = ''; // price removed
+      modalPrice.textContent = ''; // price hidden
       modalBadge.textContent = p.cat;
       modalWa.href = `https://wa.me/233241588134?text=Hello%20Kofi%20N.%20Technologies,%0A%0AI’m%20interested%20in:%20${encodeURIComponent(p.name)}%0AFrom%20Shop:%20https://www.kofintechnologies.com/shop.html#${p.id}`;
       modal.classList.add('open');
@@ -497,36 +509,102 @@
     updateQuoteUI();
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // ====== JSON-LD: ItemList + Product (no price in offers) ======
+    // ====== JSON-LD: ItemList + Product WITH offers (hidden in UI, visible to Google) + FAQ ======
     (function injectLD(){
-      const base = 'https://www.kofintechnologies.com/shop.html#';
+      const pageUrl = 'https://www.kofintechnologies.com/shop.html';
+      const base = pageUrl + '#';
+
+      // 1) ItemList for the grid
       const itemList = {
         "@context": "https://schema.org",
         "@type": "ItemList",
-        "itemListElement": PRODUCTS.slice(0,12).map((p,i)=>({
+        "@id": pageUrl + "#list",
+        "itemListElement": PRODUCTS.map((p,i)=>({
           "@type":"ListItem","position": i+1, "url": base + p.id, "name": p.name
-        }))}
-      ;
-      const products = {
+        }))
+      };
+
+      // Common policy & shipping (reused across offers)
+      const merchantReturnPolicy = {
+        "@type": "MerchantReturnPolicy",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 7,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/ReturnShippingFees"
+      };
+      const shippingDetails = {
+        "@type": "OfferShippingDetails",
+        "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "GHS" },
+        "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "GH" },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 3, "unitCode": "d" },
+          "transitTime": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 5, "unitCode": "d" }
+        }
+      };
+
+      // 2) Products WITH offers.price (kept out of UI, present only in JSON-LD)
+      const productGraph = {
         "@context":"https://schema.org",
-        "@graph": PRODUCTS.slice(0,8).map(p=>({
+        "@graph": PRODUCTS.map(p=>({
           "@type":"Product",
           "@id": base + p.id,
           "name": p.name,
           "description": p.desc,
           "category": p.cat,
-          "image": "https://www.kofintechnologies.com/" + p.img.replace(/^\/?/,''),
+          "image": "https://www.kofintechnologies.com/" + p.img.replace(/^\/?/, ''),
           "brand": {"@type":"Brand","name":"Kofi N. Technologies"},
           "offers": {
-            "@type":"Offer",
+            "@type": "Offer",
+            "url": base + p.id,
             "priceCurrency": p.unit || "GHS",
+            "price": String(p.price),
+            "priceValidUntil": "2026-12-31",
             "availability": "https://schema.org/InStock",
-            "url": base + p.id
+            "itemCondition": "https://schema.org/NewCondition",
+            "hasMerchantReturnPolicy": merchantReturnPolicy,
+            "shippingDetails": shippingDetails
           }
-        }))}
-      ;
+          // NOTE: We’re not adding aggregateRating/review to avoid fabricating data.
+        }))
+      };
+
+      // 3) OPTIONAL: FAQ (no prices; good for visibility)
+      const faq = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": pageUrl + "#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I get pricing for gate motors, fences or CCTV?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Contact us on WhatsApp or phone and we’ll provide a tailored quote based on your site measurements and preferences."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you handle installation across Ghana?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Our certified technicians install nationwide with a 2-year installation warranty."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What payment options are available?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We accept Mobile Money and bank payments. A deposit is required to schedule installation."
+            }
+          }
+        ]
+      };
+
       const s1 = document.createElement('script'); s1.type='application/ld+json'; s1.textContent = JSON.stringify(itemList); document.head.appendChild(s1);
-      const s2 = document.createElement('script'); s2.type='application/ld+json'; s2.textContent = JSON.stringify(products); document.head.appendChild(s2);
+      const s2 = document.createElement('script'); s2.type='application/ld+json'; s2.textContent = JSON.stringify(productGraph); document.head.appendChild(s2);
+      const s3 = document.createElement('script'); s3.type='application/ld+json'; s3.textContent = JSON.stringify(faq); document.head.appendChild(s3);
     })();
   </script>
 </body>
