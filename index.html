@@ -6,16 +6,15 @@
 
   <title>Automated Gates in Ghana | Electric Fences, Garage Doors, Intercoms – Kofi N. Technologies</title>
 
-  <!-- Primary Meta Tags (kept, refined) -->
+  <!-- Primary Meta -->
   <meta name="description" content="Kofi N. Technologies installs automated gates, garage doors, electric fences, CCTV, and smart security systems in Ghana. Book a free consultation now.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#2563eb">
-  <!-- (Optional) Keywords are largely ignored by Google now; safe to remove. -->
 
-  <!-- Canonical: point to ONE preferred host (pick www or non-www) -->
+  <!-- Canonical: keep ONE preferred host (www in your case) -->
   <link rel="canonical" href="https://www.kofintechnologies.com/" />
 
-  <!-- Open Graph / Social: use an existing, no-space image (g7.png) until og-cover.webp is added -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.kofintechnologies.com/">
   <meta property="og:title" content="Kofi N. Technologies - Automated Gates & Smart Security in Ghana">
@@ -30,19 +29,31 @@
   <meta name="twitter:description" content="Garage Doors, Electric Gates, CCTV & Intercoms professionally installed in Ghana.">
   <meta name="twitter:image" content="https://www.kofintechnologies.com/images/g7.png">
 
-  <!-- Performance: preload the hero image that actually exists (PNG). Add WEBP later if you have it -->
+  <!-- Performance -->
   <link rel="preload" href="images/g7.png" as="image" fetchpriority="high">
 
-  <!-- Favicons (put these in your site ROOT: /favicon.png, /favicon.ico, /apple-touch-icon.png) -->
+  <!-- Favicons -->
   <link rel="icon" type="image/png" href="/images/glogo.png">
-  <link rel="icon" href="/images/glogo.png">
   <link rel="apple-touch-icon" href="/images/glogo.png">
 
-  <!-- Remove Tailwind CDN to stop the production warning; your CSS below covers everything -->
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- LocalBusiness JSON-LD (no spaces in image filenames) -->
+  <!-- WebSite JSON-LD (adds site entity + search action) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "url":"https://www.kofintechnologies.com/",
+    "name":"Kofi N. Technologies",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://www.kofintechnologies.com/search?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- LocalBusiness JSON-LD (enriched) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -68,7 +79,13 @@
       "closes": "20:00"
     }],
     "areaServed": "GH",
-    "priceRange": "$$"
+    "priceRange": "$$",
+    "sameAs": [
+      "https://www.facebook.com/yourpage",
+      "https://www.instagram.com/yourpage",
+      "https://www.linkedin.com/company/yourpage"
+    ],
+    "hasMap": "https://maps.google.com/?q=Adenta%20Amrahia%2C%20Greater%20Accra%2C%20Ghana"
   }
   </script>
 
@@ -232,7 +249,6 @@
       <a href="index.html" class="logo">Kofi N. Technologies</a>
       <ul class="nav-links" id="navMenu">
         <li><a href="index.html" aria-current="page">Home</a></li>
-        <!-- IMPORTANT: use lowercase filenames everywhere to avoid duplicates -->
         <li><a href="shop.html">Shop</a></li>
         <li><a href="aboutus.html">About Us</a></li>
         <li><a href="media.html">Media</a></li>
@@ -244,9 +260,9 @@
 
   <!-- HERO -->
   <section class="hero" aria-label="Hero">
-    <!-- Use WEBP when you add it; PNG is used now to stop the 404 -->
+    <!-- TIP: when you add a real .webp, change the type to image/webp and srcset to that .webp file -->
     <picture>
-      <source srcset="images/g7.png" type="image/webp">
+      <source srcset="images/g7.png" type="image/png">
       <img src="images/g7.png" alt="Automated Gate Solutions in Ghana" loading="eager">
     </picture>
     <div class="hero-overlay" aria-hidden="true"></div>
@@ -324,7 +340,7 @@
     <div class="heritage-grid">
       <div class="heritage-image">
         <picture>
-          <source srcset="images/g7.png" type="image/webp">
+          <source srcset="images/g7.png" type="image/png">
           <img src="images/g7.png" loading="lazy" alt="Automated Security Systems">
         </picture>
       </div>
@@ -521,7 +537,6 @@
       <div class="footer-grid">
         <div class="footer-column">
           <div class="footer-logo">
-            <!-- Logo fallback: if glogo.png 404s, hide the img and show text -->
             <img src="images/glogo.png" alt="Company Logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <div style="display:none; font-weight:700; font-size:1.1rem;">Kofi N. Technologies</div>
           </div>
