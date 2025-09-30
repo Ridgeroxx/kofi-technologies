@@ -311,18 +311,13 @@
     });
 
     // ====== Products (prices kept internally; UI hides them with CSS) ======
-    // If you have REAL ratings, add ratingValue (1-5) & reviewCount to the items you have data for.
     const PRODUCTS = [
       { id:'gate-sliding', name:'Sliding Gate Motor (Kit)', cat:'Gate Automation', price:3800, unit:'GHS', img:'images/automated-gate.jpeg', w:1200,h:800,
-        desc:'Robust sliding gate motor with remotes, safety photo-sensors and manual release.', popular:true
-        // ,ratingValue:4.8, reviewCount:26
-      },
+        desc:'Robust sliding gate motor with remotes, safety photo-sensors and manual release.', popular:true },
       { id:'gate-swing', name:'Swing Gate Motor (Kit)', cat:'Gate Automation', price:3600, unit:'GHS', img:'images/automated-gate.jpeg', w:1200,h:800,
         desc:'Dual/single swing motor kit, durable arms, remote controls and safety hardware.' },
       { id:'fence-standard', name:'Electric Fence Package (20m)', cat:'Electric Fence', price:2500, unit:'GHS', img:'images/electric-fence.jpg', w:1200,h:800,
-        desc:'Energizer, posts, wires, warning signs and alarm integration for standard plots.', popular:true
-        // ,ratingValue:4.7, reviewCount:19
-      },
+        desc:'Energizer, posts, wires, warning signs and alarm integration for standard plots.', popular:true },
       { id:'fence-pro', name:'Electric Fence Package (40m)', cat:'Electric Fence', price:4200, unit:'GHS', img:'images/electric-fence.jpg', w:1200,h:800,
         desc:'Extended perimeter protection with battery backup and tamper detection.' },
       { id:'shutter-auto', name:'Roller Shutter — Automated', cat:'Roller Shutters', price:5200, unit:'GHS', img:'images/shutter.jpeg', w:1200,h:800,
@@ -511,7 +506,7 @@
     updateQuoteUI();
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // ====== JSON-LD: ItemList + Product WITH offers (hidden in UI), conditional aggregateRating + FAQ ======
+    // ====== JSON-LD: ItemList + Product WITH offers (no aggregateRating unless real) + FAQ ======
     (function injectLD(){
       const pageUrl = 'https://www.kofintechnologies.com/shop.html';
       const base = pageUrl + '#';
@@ -526,7 +521,7 @@
         }))
       };
 
-      // Merchant policy & shipping (addresses SC suggestions)
+      // Merchant return policy & shipping (addresses Search Console suggestions)
       const merchantReturnPolicy = {
         "@type": "MerchantReturnPolicy",
         "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
@@ -555,7 +550,7 @@
         "logo": "https://www.kofintechnologies.com/images/glogo.png"
       };
 
-      // 2) Products WITH offers.price (UI still hides price). Add sku, seller, and conditional aggregateRating.
+      // 2) Products WITH offers; add sku & seller. NO aggregateRating unless you set real data on the product object.
       const productsGraph = {
         "@context":"https://schema.org",
         "@graph": PRODUCTS.map(p=>{
@@ -572,8 +567,8 @@
               "@type": "Offer",
               "url": base + p.id,
               "priceCurrency": p.unit || "GHS",
-              "price": String(p.price),
-              "priceValidUntil": "2026-12-31",
+              "price": p.price,
+              "priceValidUntil": "2027-12-31",
               "availability": "https://schema.org/InStock",
               "itemCondition": "https://schema.org/NewCondition",
               "seller": seller,
@@ -584,17 +579,17 @@
           if (p.ratingValue && p.reviewCount) {
             prod.aggregateRating = {
               "@type": "AggregateRating",
-              "ratingValue": String(p.ratingValue),
-              "reviewCount": String(p.reviewCount),
-              "bestRating": "5",
-              "worstRating": "1"
+              "ratingValue": p.ratingValue,
+              "reviewCount": p.reviewCount,
+              "bestRating": 5,
+              "worstRating": 1
             };
           }
           return prod;
         })
       };
 
-      // 3) FAQ
+      // 3) FAQ (helpful content, no fake reviews)
       const faq = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -627,6 +622,7 @@
         ]
       };
 
+      // Append scripts
       const s1 = document.createElement('script'); s1.type='application/ld+json'; s1.textContent = JSON.stringify(itemList); document.head.appendChild(s1);
       const s2 = document.createElement('script'); s2.type='application/ld+json'; s2.textContent = JSON.stringify(productsGraph); document.head.appendChild(s2);
       const s3 = document.createElement('script'); s3.type='application/ld+json'; s3.textContent = JSON.stringify(faq); document.head.appendChild(s3);
