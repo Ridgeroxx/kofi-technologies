@@ -10,7 +10,7 @@
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#2563eb" />
 
-  <!-- Canonical (ONE preferred host; matches site) -->
+  <!-- Canonical -->
   <link rel="canonical" href="https://www.kofintechnologies.com/shop.html" />
 
   <!-- Open Graph / Social -->
@@ -21,7 +21,6 @@
   <meta property="og:image" content="https://www.kofintechnologies.com/images/g7.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Shop | Kofi N. Technologies" />
   <meta name="twitter:description" content="Explore premium security and automation solutions." />
@@ -124,10 +123,10 @@
     /* Footer */
     .footer{background:#101820;color:#fff;margin-top:40px}
     .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
-    .footer-title{font-weight:900;color:var(--cyan)}
+    .footer-title{font-weight:900;color:#00FFD1}
     .footer-links{list-style:none;margin:0;padding:0}
     .footer-links li{margin:.35rem 0}
-    .footer a:hover{color:var(--cyan)}
+    .footer a:hover{color:#00FFD1}
     .footer-bottom{border-top:1px solid rgba(255,255,255,.1);text-align:center;padding:14px;color:#94a3b8;font-size:.9rem}
   </style>
 
@@ -312,13 +311,18 @@
     });
 
     // ====== Products (prices kept internally; UI hides them with CSS) ======
+    // If you have REAL ratings, add ratingValue (1-5) & reviewCount to the items you have data for.
     const PRODUCTS = [
       { id:'gate-sliding', name:'Sliding Gate Motor (Kit)', cat:'Gate Automation', price:3800, unit:'GHS', img:'images/automated-gate.jpeg', w:1200,h:800,
-        desc:'Robust sliding gate motor with remotes, safety photo-sensors and manual release.', popular:true },
+        desc:'Robust sliding gate motor with remotes, safety photo-sensors and manual release.', popular:true
+        // ,ratingValue:4.8, reviewCount:26
+      },
       { id:'gate-swing', name:'Swing Gate Motor (Kit)', cat:'Gate Automation', price:3600, unit:'GHS', img:'images/automated-gate.jpeg', w:1200,h:800,
         desc:'Dual/single swing motor kit, durable arms, remote controls and safety hardware.' },
       { id:'fence-standard', name:'Electric Fence Package (20m)', cat:'Electric Fence', price:2500, unit:'GHS', img:'images/electric-fence.jpg', w:1200,h:800,
-        desc:'Energizer, posts, wires, warning signs and alarm integration for standard plots.', popular:true },
+        desc:'Energizer, posts, wires, warning signs and alarm integration for standard plots.', popular:true
+        // ,ratingValue:4.7, reviewCount:19
+      },
       { id:'fence-pro', name:'Electric Fence Package (40m)', cat:'Electric Fence', price:4200, unit:'GHS', img:'images/electric-fence.jpg', w:1200,h:800,
         desc:'Extended perimeter protection with battery backup and tamper detection.' },
       { id:'shutter-auto', name:'Roller Shutter — Automated', cat:'Roller Shutters', price:5200, unit:'GHS', img:'images/shutter.jpeg', w:1200,h:800,
@@ -507,7 +511,7 @@
     updateQuoteUI();
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // ====== JSON-LD: ItemList + Product WITH offers (hidden in UI, visible to Google) + FAQ ======
+    // ====== JSON-LD: ItemList + Product WITH offers (hidden in UI), conditional aggregateRating + FAQ ======
     (function injectLD(){
       const pageUrl = 'https://www.kofintechnologies.com/shop.html';
       const base = pageUrl + '#';
@@ -522,20 +526,15 @@
         }))
       };
 
-      // Common policy & shipping (reused across offers) — UPDATED for Merchant listings warnings
+      // Merchant policy & shipping (addresses SC suggestions)
       const merchantReturnPolicy = {
         "@type": "MerchantReturnPolicy",
         "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
         "merchantReturnDays": 7,
         "returnMethod": "https://schema.org/ReturnByMail",
-
         "applicableCountry": "GH",
         "returnFees": "https://schema.org/ReturnShippingFees",
-        "returnShippingFeesAmount": {
-          "@type": "MonetaryAmount",
-          "value": "0",
-          "currency": "GHS"
-        }
+        "returnShippingFeesAmount": { "@type": "MonetaryAmount", "value": "0", "currency": "GHS" }
       };
 
       const shippingDetails = {
@@ -549,32 +548,53 @@
         }
       };
 
-      // 2) Products WITH offers.price (kept out of UI, present only in JSON-LD)
-      const productGraph = {
-        "@context":"https://schema.org",
-        "@graph": PRODUCTS.map(p=>({
-          "@type":"Product",
-          "@id": base + p.id,
-          "name": p.name,
-          "description": p.desc,
-          "category": p.cat,
-          "image": "https://www.kofintechnologies.com/" + p.img.replace(/^\/?/, ''),
-          "brand": {"@type":"Brand","name":"Kofi N. Technologies"},
-          "offers": {
-            "@type": "Offer",
-            "url": base + p.id,
-            "priceCurrency": p.unit || "GHS",
-            "price": String(p.price),
-            "priceValidUntil": "2026-12-31",
-            "availability": "https://schema.org/InStock",
-            "itemCondition": "https://schema.org/NewCondition",
-            "hasMerchantReturnPolicy": merchantReturnPolicy,
-            "shippingDetails": shippingDetails
-          }
-        }))
+      const seller = {
+        "@type": "Organization",
+        "name": "Kofi N. Technologies",
+        "url": "https://www.kofintechnologies.com/",
+        "logo": "https://www.kofintechnologies.com/images/glogo.png"
       };
 
-      // 3) FAQ (helpful; no fake reviews/ratings)
+      // 2) Products WITH offers.price (UI still hides price). Add sku, seller, and conditional aggregateRating.
+      const productsGraph = {
+        "@context":"https://schema.org",
+        "@graph": PRODUCTS.map(p=>{
+          const prod = {
+            "@type":"Product",
+            "@id": base + p.id,
+            "sku": p.id,
+            "name": p.name,
+            "description": p.desc,
+            "category": p.cat,
+            "image": "https://www.kofintechnologies.com/" + p.img.replace(/^\/?/, ''),
+            "brand": {"@type":"Brand","name":"Kofi N. Technologies"},
+            "offers": {
+              "@type": "Offer",
+              "url": base + p.id,
+              "priceCurrency": p.unit || "GHS",
+              "price": String(p.price),
+              "priceValidUntil": "2026-12-31",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition",
+              "seller": seller,
+              "hasMerchantReturnPolicy": merchantReturnPolicy,
+              "shippingDetails": shippingDetails
+            }
+          };
+          if (p.ratingValue && p.reviewCount) {
+            prod.aggregateRating = {
+              "@type": "AggregateRating",
+              "ratingValue": String(p.ratingValue),
+              "reviewCount": String(p.reviewCount),
+              "bestRating": "5",
+              "worstRating": "1"
+            };
+          }
+          return prod;
+        })
+      };
+
+      // 3) FAQ
       const faq = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -608,7 +628,7 @@
       };
 
       const s1 = document.createElement('script'); s1.type='application/ld+json'; s1.textContent = JSON.stringify(itemList); document.head.appendChild(s1);
-      const s2 = document.createElement('script'); s2.type='application/ld+json'; s2.textContent = JSON.stringify(productGraph); document.head.appendChild(s2);
+      const s2 = document.createElement('script'); s2.type='application/ld+json'; s2.textContent = JSON.stringify(productsGraph); document.head.appendChild(s2);
       const s3 = document.createElement('script'); s3.type='application/ld+json'; s3.textContent = JSON.stringify(faq); document.head.appendChild(s3);
     })();
   </script>
