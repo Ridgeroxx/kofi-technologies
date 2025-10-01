@@ -523,14 +523,14 @@
 
       // Merchant return policy & shipping (addresses Search Console suggestions)
       const merchantReturnPolicy = {
-        "@type": "MerchantReturnPolicy",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 7,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "applicableCountry": "GH",
-        "returnFees": "https://schema.org/ReturnShippingFees",
-        "returnShippingFeesAmount": { "@type": "MonetaryAmount", "value": "0", "currency": "GHS" }
-      };
+      "@type": "MerchantReturnPolicy",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "applicableCountry": "GH",
+      "returnFees": "https://schema.org/FreeReturn"
+     };
+
 
       const shippingDetails = {
         "@type": "OfferShippingDetails",
