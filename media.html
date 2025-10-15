@@ -7,7 +7,7 @@
 
   <title>Media | Kofi N. Technologies — Installations & Demos</title>
   <meta name="description" content="Watch our installation and demo videos of automated gates, electric fences, garage doors, CCTV, and access control across Ghana. See photos from recent projects." />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-video-preview:-1" />
   <meta name="theme-color" content="#2563eb" />
 
   <!-- Canonical: EXACTLY this URL -->
@@ -129,12 +129,29 @@
     .footer-bottom{border-top:1px solid rgba(255,255,255,.1);text-align:center;padding:14px;color:#94a3b8;font-size:.9rem}
   </style>
 
-  <!-- JSON-LD: Breadcrumbs -->
+  <!-- JSON-LD: Breadcrumbs + ItemList (points to dedicated watch pages; NO VideoObject here) -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.kofintechnologies.com/"},
-    {"@type":"ListItem","position":2,"name":"Media","item":"https://www.kofintechnologies.com/media.html"}
-  ]}
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://www.kofintechnologies.com/"},
+          {"@type":"ListItem","position":2,"name":"Media","item":"https://www.kofintechnologies.com/media.html"}
+        ]
+      },
+      {
+        "@type":"ItemList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"url":"https://www.kofintechnologies.com/watch-automated-gate.html","name":"Automated Gate Demo"},
+          {"@type":"ListItem","position":2,"url":"https://www.kofintechnologies.com/watch-cctv-vid.html","name":"CCTV System Overview"},
+          {"@type":"ListItem","position":3,"url":"https://www.kofintechnologies.com/watch-electric-gate.html","name":"Electric Gate Operation"},
+          {"@type":"ListItem","position":4,"url":"https://www.kofintechnologies.com/watch-gate1-vid.html","name":"Gate Installation Timelapse"}
+        ]
+      }
+    ]
+  }
   </script>
 </head>
 <body>
@@ -283,10 +300,10 @@
 
     // Videos (use ad-block-safe, no-spaces names in /videos/)
     const VIDEOS = [
-      { id:'automated-gate', title:'Automated Gate Demo', cat:'Gate Automation', src:'videos/gate-auto-demo.mp4', poster:'images/g1.jpeg', desc:'Smooth open/close with remotes and safety sensors.', uploaded:'2025-08-10', duration:'PT45S' },
-      { id:'cctv-vid',       title:'CCTV System Overview',   cat:'CCTV',           src:'videos/cctv-system-mobile.mp4', poster:'images/g4.jpeg', desc:'Camera coverage, NVR, and remote viewing.', uploaded:'2025-08-09', duration:'PT1M10S' },
-      { id:'electric-gate',  title:'Electric Gate Operation',cat:'Gate Automation', src:'videos/electric-gate-demo.mp4', poster:'images/g2.jpeg', desc:'Powerful gate motor kit for wide entrances.', uploaded:'2025-08-08', duration:'PT52S' },
-      { id:'gate1-vid',      title:'Gate Installation Timelapse', cat:'Gate Automation', src:'videos/gate-field-test.mp4', poster:'images/g3.jpeg', desc:'Installation highlights from site prep to handover.', uploaded:'2025-08-07', duration:'PT38S' }
+      { id:'automated-gate', title:'Automated Gate Demo',       cat:'Gate Automation', src:'videos/gate-auto-demo.mp4',        poster:'images/g1.jpeg', desc:'Smooth open/close with remotes and safety sensors.' },
+      { id:'cctv-vid',       title:'CCTV System Overview',       cat:'CCTV',           src:'videos/cctv-system-mobile.mp4',   poster:'images/g4.jpeg', desc:'Camera coverage, NVR, and remote viewing.' },
+      { id:'electric-gate',  title:'Electric Gate Operation',    cat:'Gate Automation', src:'videos/electric-gate-demo.mp4',   poster:'images/g2.jpeg', desc:'Powerful gate motor kit for wide entrances.' },
+      { id:'gate1-vid',      title:'Gate Installation Timelapse',cat:'Gate Automation', src:'videos/gate-field-test.mp4',      poster:'images/g3.jpeg', desc:'Installation highlights from site prep to handover.' }
     ];
 
     const vgrid = document.getElementById('vgrid');
@@ -358,7 +375,6 @@
           Your browser does not support the video tag.
         </video>`;
       vmodal.classList.add('open');
-      location.hash = 'v-'+v.id;
       vmshare.onclick = () => copyLink(watchUrl(v));
     }
     function closeModal(){ vmodal.classList.remove('open'); vmmedia.innerHTML=''; }
@@ -414,37 +430,6 @@
 
     // Initial render
     renderVideos();
-
-    // VideoObject JSON-LD for each video (with uploadDate/duration & watch URL)
-    (function injectVideosLD(){
-    const graph = VIDEOS.map(v => ({
-      "@type": "VideoObject",
-      "name": v.title,
-      "description": v.desc,
-      "thumbnailUrl": location.origin + '/' + v.poster.replace(/^\/?/, ''),
-      "contentUrl":  location.origin + '/' + v.src.replace(/^\/?/, ''),
-      "uploadDate":  (v.uploaded ? new Date(v.uploaded).toISOString() : new Date().toISOString()),
-      ...(v.duration ? { "duration": v.duration } : {}),
-      "url": location.origin + '/' + (('watch-' + v.id + '.html')),
-      "publisher": { "@type":"Organization", "name":"Kofi N. Technologies" },
-      "potentialAction": {
-        "@type":"WatchAction",
-        "target": { "@type":"EntryPoint", "urlTemplate": location.origin + '/' + ('watch-' + v.id + '.html') }
-      },
-      "hasPart": {
-        "@type": "Clip",
-        "name": v.title + " Clip",
-        "startOffset": 0
-      },
-      "potentialAction": {
-        "@type": "SeekToAction",
-        "target": location.origin + '/' + ('watch-' + v.id + '.html') + "?t={seek_to_second_number}",
-        "startOffset-input": "required name=seek_to_second_number"
-      }
-    }));
-    const ld = { "@context":"https://schema.org", "@graph": graph };
-    const s = document.createElement('script'); s.type='application/ld+json'; s.textContent = JSON.stringify(ld); document.head.appendChild(s);
-  })();
   </script>
 </body>
 </html>
