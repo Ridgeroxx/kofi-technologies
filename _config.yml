@@ -1,0 +1,5 @@
+url: "https://www.kofintechnologies.com"
+plugins:
+  - jekyll-redirect-from
+  - jekyll-sitemap
+# keep your site as plain .html pages (no permalink changes)
