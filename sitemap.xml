@@ -1,36 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Home -->
+  <!-- Home - include both versions with proper canonical -->
   <url>
     <loc>https://www.kofintechnologies.com/</loc>
     <lastmod>2025-08-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  
+  <!-- Alternative homepage (if accessible) with lower priority -->
+  <url>
+    <loc>https://www.kofintechnologies.com/index.html</loc>
+    <lastmod>2025-08-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
 
-  <!-- Core pages (canonical .html) -->
+  <!-- Core pages (consistent with actual URLs) -->
   <url>
     <loc>https://www.kofintechnologies.com/shop.html</loc>
     <lastmod>2025-08-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  
   <url>
     <loc>https://www.kofintechnologies.com/aboutus.html</loc>
     <lastmod>2025-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  
   <url>
     <loc>https://www.kofintechnologies.com/media.html</loc>
     <lastmod>2025-08-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  
   <url>
     <loc>https://www.kofintechnologies.com/contact.html</loc>
     <lastmod>2025-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Video pages (MISSING FROM CURRENT SITEMAP) -->
+  <url>
+    <loc>https://www.kofintechnologies.com/watch-electric-gate.html</loc>
+    <lastmod>2025-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.kofintechnologies.com/watch-cctv-vid.html</loc>
+    <lastmod>2025-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.kofintechnologies.com/watch-gate1-vid.html</loc>
+    <lastmod>2025-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.kofintechnologies.com/watch-automated-gate.html</loc>
+    <lastmod>2025-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
