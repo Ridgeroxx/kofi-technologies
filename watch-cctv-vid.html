@@ -71,7 +71,7 @@
   }
   </script>
 
-  <!-- VideoObject (primary content on this page) -->
+  <!-- VideoObject - FIXED: Removed SeekToAction causing canonical issues -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -83,19 +83,33 @@
     "uploadDate":"2025-08-09T12:00:00Z",
     "duration":"PT1M10S",
     "url":"https://www.kofintechnologies.com/watch-cctv-vid.html",
-    "publisher":{"@type":"Organization","name":"Kofi N. Technologies"},
-    "potentialAction": [
-      {
-        "@type":"WatchAction",
-        "target":{"@type":"EntryPoint","urlTemplate":"https://www.kofintechnologies.com/watch-cctv-vid.html"}
-      },
-      {
-        "@type":"SeekToAction",
-        "target":"https://www.kofintechnologies.com/watch-cctv-vid.html?t={seek_to_second_number}",
-        "startOffset-input":"required name=seek_to_second_number"
-      }
-    ]
+    "publisher":{"@type":"Organization","name":"Kofi N. Technologies"}
+    /* REMOVED: "potentialAction" with SeekToAction that was creating ?t parameter URLs */
   }
+  </script>
+
+  <!-- JavaScript to handle ?t parameter without creating canonical issues -->
+  <script>
+    // Handle video time parameter from URL
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const timeParam = urlParams.get('t');
+      const video = document.querySelector('video');
+      
+      // If ?t parameter exists and video is available, seek to that time
+      if (timeParam && video) {
+        const seekTime = parseInt(timeParam);
+        if (!isNaN(seekTime) && seekTime >= 0 && seekTime < video.duration) {
+          video.currentTime = seekTime;
+        }
+        
+        // Optional: Update URL without reload (clean URL)
+        if (history.replaceState) {
+          const cleanUrl = window.location.pathname;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+      }
+    });
   </script>
 </head>
 <body>
