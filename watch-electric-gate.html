@@ -10,7 +10,7 @@
   <meta name="robots" content="index, follow, max-video-preview:-1" />
   <meta name="theme-color" content="#2563eb" />
 
-  <!-- Canonical -->
+  <!-- Canonical - CRITICAL FIX -->
   <link rel="canonical" href="https://www.kofintechnologies.com/watch-electric-gate.html" />
 
   <!-- Open Graph -->
@@ -24,7 +24,7 @@
   <meta property="og:video:width" content="1280" />
   <meta property="og:video:height" content="720" />
 
-  <!-- Twitter (player cards require allowlisting; use summary_large_image for reliability) -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Electric Gate Operation" />
   <meta name="twitter:description" content="Powerful gate motor kit for wide entrances." />
@@ -71,7 +71,7 @@
   }
   </script>
 
-  <!-- VideoObject (primary content) -->
+  <!-- VideoObject - FIXED: Removed SeekToAction causing canonical issues -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -83,19 +83,33 @@
     "uploadDate":"2025-08-08T12:00:00Z",
     "duration":"PT52S",
     "url":"https://www.kofintechnologies.com/watch-electric-gate.html",
-    "publisher":{"@type":"Organization","name":"Kofi N. Technologies"},
-    "potentialAction":[
-      {
-        "@type":"WatchAction",
-        "target":{"@type":"EntryPoint","urlTemplate":"https://www.kofintechnologies.com/watch-electric-gate.html"}
-      },
-      {
-        "@type":"SeekToAction",
-        "target":"https://www.kofintechnologies.com/watch-electric-gate.html?t={seek_to_second_number}",
-        "startOffset-input":"required name=seek_to_second_number"
-      }
-    ]
+    "publisher":{"@type":"Organization","name":"Kofi N. Technologies"}
+    /* REMOVED: "potentialAction" with SeekToAction that was creating ?t parameter URLs */
   }
+  </script>
+
+  <!-- JavaScript to handle ?t parameter without creating canonical issues -->
+  <script>
+    // Handle video time parameter from URL
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const timeParam = urlParams.get('t');
+      const video = document.querySelector('video');
+      
+      // If ?t parameter exists and video is available, seek to that time
+      if (timeParam && video) {
+        const seekTime = parseInt(timeParam);
+        if (!isNaN(seekTime) && seekTime >= 0 && seekTime < video.duration) {
+          video.currentTime = seekTime;
+        }
+        
+        // Optional: Update URL without reload (clean URL)
+        if (history.replaceState) {
+          const cleanUrl = window.location.pathname;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+      }
+    });
   </script>
 </head>
 <body>
@@ -120,10 +134,10 @@
 
     <div class="actions">
       <a class="btn" href="/videos/electric-gate-demo.mp4" download><i class="fas fa-download" aria-hidden="true"></i> Download</a>
-      <a class="btn primary" href="https://wa.me/233241588134?text=Hello%20Kofi%20N.%20Technologies,%0A%0AI%27m%20interested%20in%20Electric%20Gate%20systems%20like%20the%20demo.%0A" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Us</a>
+      <a class="btn primary" href="https://wa.me/233241588134?text=Hello%20Kofi%20N.%20Technologies,%0A%0AI'm%20interested%20in%20Electric%20Gate%20systems%20like%20the%20demo.%0A" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Us</a>
     </div>
 
-    <!-- Optional: links to other videos to improve internal discovery -->
+    <!-- Links to other videos -->
     <div class="nav-links" aria-label="Other videos">
       <a href="/watch-automated-gate.html">Automated Gate Demo</a> ·
       <a href="/watch-cctv-vid.html">CCTV System Overview</a> ·
