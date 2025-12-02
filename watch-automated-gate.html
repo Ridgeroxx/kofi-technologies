@@ -35,6 +35,9 @@
   <link rel="icon" type="image/png" href="/images/glogo.png" />
   <link rel="apple-touch-icon" href="/images/glogo.png" />
 
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
   <style>
     :root{--ring:#e5e7eb;--ink:#0b1220;--muted:#6b7280;--accent:#2563eb}
     *{box-sizing:border-box}
@@ -66,7 +69,7 @@
   }
   </script>
 
-  <!-- VideoObject for THIS watch page (primary video content) -->
+  <!-- VideoObject - FIXED: Removed SeekToAction causing canonical issues -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -78,22 +81,33 @@
     "uploadDate":"2025-08-10T00:00:00Z",
     "duration":"PT45S",
     "publisher":{"@type":"Organization","name":"Kofi N. Technologies"},
-    "url":"https://www.kofintechnologies.com/watch-automated-gate.html",
-    "potentialAction": [
-      {
-        "@type":"WatchAction",
-        "target":{
-          "@type":"EntryPoint",
-          "urlTemplate":"https://www.kofintechnologies.com/watch-automated-gate.html"
-        }
-      },
-      {
-        "@type":"SeekToAction",
-        "target":"https://www.kofintechnologies.com/watch-automated-gate.html?t={seek_to_second_number}",
-        "startOffset-input":"required name=seek_to_second_number"
-      }
-    ]
+    "url":"https://www.kofintechnologies.com/watch-automated-gate.html"
+    /* REMOVED: "potentialAction" with SeekToAction that was creating ?t parameter URLs */
   }
+  </script>
+
+  <!-- JavaScript to handle ?t parameter without creating canonical issues -->
+  <script>
+    // Handle video time parameter from URL
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const timeParam = urlParams.get('t');
+      const video = document.querySelector('video');
+      
+      // If ?t parameter exists and video is available, seek to that time
+      if (timeParam && video) {
+        const seekTime = parseInt(timeParam);
+        if (!isNaN(seekTime) && seekTime >= 0 && seekTime < video.duration) {
+          video.currentTime = seekTime;
+        }
+        
+        // Optional: Update URL without reload (clean URL)
+        if (history.replaceState) {
+          const cleanUrl = window.location.pathname;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+      }
+    });
   </script>
 </head>
 <body>
@@ -125,8 +139,5 @@
       <a href="/watch-gate1-vid.html">Gate Installation Timelapse</a>
     </div>
   </div>
-
-  <!-- Font Awesome (if not globally included) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
 </body>
 </html>
